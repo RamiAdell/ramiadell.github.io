@@ -1008,12 +1008,41 @@
             });
         }
 
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Collect nav anchors from both the header and mobile menu
+        const navAnchors = document.querySelectorAll('#navbar a[href^="#"], #mobile-menu a[href^="#"]');
+
+        // Clicking a nav anchor should mark it active (and close mobile menu if open)
+        navAnchors.forEach(link => {
             link.addEventListener('click', function() {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-cyan-400'));
+                navAnchors.forEach(l => l.classList.remove('text-cyan-400'));
                 this.classList.add('text-cyan-400');
+                // mobile menu auto-hide handled elsewhere (anchor click already hides it)
             });
         });
+
+        // Scroll-spy: observe sections and update active nav link on scroll/swipe
+        const sections = document.querySelectorAll('section[id]');
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    // Find matching anchor(s) and update classes
+                    navAnchors.forEach(a => {
+                        const href = a.getAttribute('href');
+                        if (href === `#${id}`) {
+                            a.classList.add('text-cyan-400');
+                        } else {
+                            a.classList.remove('text-cyan-400');
+                        }
+                    });
+                }
+            });
+        }, {
+            // Consider a section active when its middle is visible
+            threshold: 0.45
+        });
+
+        sections.forEach(s => sectionObserver.observe(s));
     </script>
 </body>
 </html>
