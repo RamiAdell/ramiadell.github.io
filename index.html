@@ -194,17 +194,27 @@
 
         /* Mobile menu slide animation */
         .mobile-menu {
+            position: absolute; /* remove from document flow so it doesn't change nav height */
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 49;
+            background: rgba(10, 10, 10, 0.8);
             max-height: 0;
             overflow: hidden;
             opacity: 0;
             transform: translateY(-8px);
-            transition: max-height 320ms cubic-bezier(.2,.8,.2,1), opacity 220ms ease, transform 220ms ease;
+            transition: max-height 320ms cubic-bezier(.2,.8,.2,1), opacity 220ms ease, transform 220ms ease, padding 220ms ease;
+            padding-top: 0; /* no padding when closed */
+            padding-bottom: 0;
         }
 
         .mobile-menu.open {
             max-height: 1000px; /* large enough to fit menu */
             opacity: 1;
             transform: translateY(0);
+            padding-top: 1rem; /* restore spacing when open */
+            padding-bottom: 1rem;
         }
 
         .particle {
@@ -318,7 +328,7 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="mobile-menu md:hidden bg-black bg-opacity-95 mt-4 py-4" aria-hidden="true">
+        <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
             <div class="flex flex-col space-y-4 px-6">
                 <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
                 <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
@@ -985,6 +995,10 @@
                             mobileBtn.setAttribute('aria-expanded', 'false');
                             mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
                         }
+                        // If we're not scrolled past the threshold, remove sticky header when closing
+                        if (navbar && window.scrollY <= 100) {
+                            navbar.classList.remove('sticky-header');
+                        }
                     }
                 }
             });
@@ -1001,11 +1015,17 @@
                 mobileMenu.setAttribute('aria-hidden', 'true');
                 mobileMenuBtn.setAttribute('aria-expanded', 'false');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                // Only remove sticky header if user hasn't scrolled past threshold
+                if (navbar && window.scrollY <= 100) {
+                    navbar.classList.remove('sticky-header');
+                }
             } else {
                 mobileMenu.classList.add('open');
                 mobileMenu.setAttribute('aria-hidden', 'false');
                 mobileMenuBtn.setAttribute('aria-expanded', 'true');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                // Make navbar appear as sticky when opening menu so menu has background in the home section
+                if (navbar) navbar.classList.add('sticky-header');
             }
         });
 
