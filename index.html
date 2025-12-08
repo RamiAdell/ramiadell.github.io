@@ -563,7 +563,7 @@
                 <div class="project-card p-8 rounded-xl fade-in">
                     <div class="flex items-start justify-between mb-4">
                         <i class="fas fa-cloud text-4xl text-cyan-400"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
+                        <a href="https://github.com/BIGRS-ITI" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -583,7 +583,7 @@
                 <div class="project-card p-8 rounded-xl fade-in">
                     <div class="flex items-start justify-between mb-4">
                         <i class="fas fa-university text-4xl text-green-400"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
+                        <a href="https://github.com/RamiAdell/secure-fintech-banking-api/" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -604,7 +604,7 @@
                 <div class="project-card p-8 rounded-xl fade-in">
                     <div class="flex items-start justify-between mb-4">
                         <i class="fas fa-video text-4xl text-purple-400"></i>
-                        <a href="http://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
+                        <a href="https://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
                             <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
@@ -624,7 +624,7 @@
                 <div class="project-card p-8 rounded-xl fade-in">
                     <div class="flex items-start justify-between mb-4">
                         <i class="fas fa-rocket text-4xl text-orange-400"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
+                        <a href="https://github.com/ibrahemyasser/3Tier-deployment-with-ArgoCd" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -959,10 +959,15 @@
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpen = mobileMenu && mobileMenu.classList.contains('open');
             if (window.scrollY > 100) {
                 navbar.classList.add('sticky-header');
             } else {
-                navbar.classList.remove('sticky-header');
+                // Only remove sticky-header when the mobile menu is NOT open
+                if (!menuOpen) {
+                    navbar.classList.remove('sticky-header');
+                }
             }
         });
 
