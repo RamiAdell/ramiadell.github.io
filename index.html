@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rami Adel Shawky - Backend Engineer & DevOps Specialist</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .progress-bar {
+            transition: width 1.5s ease;
+        }
+
+        .skill-card {
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-card {
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            border-color: rgba(168, 85, 247, 0.5);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: -30px;
+            width: 2px;
+            background: linear-gradient(180deg, #00d4ff, #a855f7);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .sticky-header {
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(0, 212, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100px, -1000px);
+                opacity: 0;
+            }
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(26, 26, 46, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #e5e5e5;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar" class="fixed top-0 w-full z-50 py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <a href="#home" class="text-2xl font-bold text-gradient">R.A.S</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience" class="nav-link hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95 mt-4 py-4">
+            <div class="flex flex-col space-y-4 px-6">
+                <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="fade-in">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                    Rami Adel Shawky
+                </h1>
+                <h2 class="text-2xl md:text-4xl text-gradient mb-6">
+                    Backend Engineer & DevOps Specialist
+                </h2>
+                <p id="typing-text" class="text-lg md:text-xl mb-8 h-16 typing-cursor"></p>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+                    <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-semibold text-white relative z-10">
+                        View Projects
+                    </a>
+                    <a href="public/70__ats_rating_resume_template_(15).pdf" download class="px-8 py-4 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition-all">
+                        Download CV
+                    </a>
+                </div>
+
+                <div class="flex gap-6 justify-center mb-12">
+                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon text-3xl hover:text-cyan-400">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon text-3xl hover:text-cyan-400">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon text-3xl hover:text-cyan-400">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <a href="#about" class="text-cyan-400 text-4xl">
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+                About <span class="text-gradient">Me</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto mb-16 fade-in">
+                <p class="text-lg leading-relaxed mb-6">
+                    Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs, microservices architectures, and deploying applications with CI/CD automation.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    Proficient in database design, caching strategies, and cloud-native deployment patterns. Passionate about building scalable systems and automating infrastructure.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="skill-card p-8 rounded-xl text-center fade-in">
+                    <div class="stat-number text-gradient mb-2" data-target="4">0</div>
+                    <p class="text-gray-400">Projects Delivered</p>
+                </div>
+                <div class="skill-card p-8 rounded-xl text-center fade-in">
+                    <div class="stat-number text-gradient mb-2" data-target="5">0</div>
+                    <p class="text-gray-400">Months ITI Training</p>
+                </div>
+                <div class="skill-card p-8 rounded-xl text-center fade-in">
+                    <div class="stat-number text-gradient mb-2" data-target="85">0</div>
+                    <p class="text-gray-400">% Release Time Reduction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+                Technical <span class="text-gradient">Skills</span>
+            </h2>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-12 fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Languages</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-python text-4xl mb-2 text-cyan-400"></i>
+                            <p class="text-sm">Python</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-js text-4xl mb-2 text-yellow-400"></i>
+                            <p class="text-sm">JavaScript</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-4xl mb-2 text-blue-400"></i>
+                            <p class="text-sm">SQL</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-terminal text-4xl mb-2 text-green-400"></i>
+                            <p class="text-sm">Bash</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-java text-4xl mb-2 text-red-400"></i>
+                            <p class="text-sm">Java</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-code text-4xl mb-2 text-blue-500"></i>
+                            <p class="text-sm">Dart</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-html5 text-4xl mb-2 text-orange-400"></i>
+                            <p class="text-sm">HTML/CSS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-12 fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Backend Frameworks</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-server text-3xl mb-2 text-green-400"></i>
+                            <p class="font-semibold">Django</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-green-400 h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-cogs text-3xl mb-2 text-blue-400"></i>
+                            <p class="font-semibold">DRF</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-flask text-3xl mb-2 text-gray-400"></i>
+                            <p class="font-semibold">Flask</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-gray-400 h-2 rounded-full" style="width: 0%" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-bolt text-3xl mb-2 text-teal-400"></i>
+                            <p class="font-semibold">FastAPI</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
+                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-teal-400 h-2 rounded-full" style="width: 0%" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-12 fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Databases</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-4xl mb-2 text-blue-500"></i>
+                            <p class="text-sm">PostgreSQL</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-4xl mb-2 text-orange-400"></i>
+                            <p class="text-sm">MySQL</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-database text-4xl mb-2 text-red-500"></i>
+                            <p class="text-sm">Redis</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-exchange-alt text-4xl mb-2 text-orange-500"></i>
+                            <p class="text-sm">RabbitMQ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-12 fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">DevOps & Cloud</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-docker text-4xl mb-2 text-blue-400"></i>
+                            <p class="text-sm">Docker</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-dharmachakra text-4xl mb-2 text-blue-500"></i>
+                            <p class="text-sm">Kubernetes</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-aws text-4xl mb-2 text-orange-400"></i>
+                            <p class="text-sm">AWS</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-code-branch text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm">Terraform</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-project-diagram text-4xl mb-2 text-red-400"></i>
+                            <p class="text-sm">Jenkins</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-sync text-4xl mb-2 text-orange-500"></i>
+                            <p class="text-sm">ArgoCD</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fab fa-git-alt text-4xl mb-2 text-orange-600"></i>
+                            <p class="text-sm">Git</p>
+                        </div>
+                        <div class="skill-card p-4 rounded-lg text-center">
+                            <i class="fas fa-chart-line text-4xl mb-2 text-orange-400"></i>
+                            <p class="text-sm">Prometheus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+                Featured <span class="text-gradient">Projects</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="project-card p-8 rounded-xl fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <i class="fas fa-cloud text-4xl text-cyan-400"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">BIGRS - Cloud-Native Platform</h3>
+                    <p class="text-gray-400 mb-4">
+                        Production-grade multi-AZ platform with GitOps workflow, reducing release time by 85%
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">AWS EKS</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">Terraform</span>
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">ArgoCD</span>
+                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Jenkins</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Kubernetes</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <i class="fas fa-university text-4xl text-green-400"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Banking FinTech API</h3>
+                    <p class="text-gray-400 mb-4">
+                        Secure banking API with JWT auth, 2FA, KYC verification, and 8+ orchestrated microservices
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Django</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">DRF</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Celery</span>
+                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm">Redis</span>
+                        <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-sm">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <i class="fas fa-video text-4xl text-purple-400"></i>
+                        <a href="http://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">NexMediaAI.com</h3>
+                    <p class="text-gray-400 mb-4">
+                        AI SaaS platform for subscription-based video captioning and translation with payment integration
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Django</span>
+                        <span class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-sm">Flask</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">Microservices</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Docker</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <i class="fas fa-rocket text-4xl text-orange-400"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Skypoint - 3-Tier K8s Deployment</h3>
+                    <p class="text-gray-400 mb-4">
+                        Production-ready GitOps deployment with self-healing rollbacks and multi-environment support
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Kubernetes</span>
+                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm">ArgoCD</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">GitOps</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">NGINX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 fade-in">
+                <span class="text-gradient">Experience</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item mb-12 fade-in">
+                    <div class="bg-black bg-opacity-50 backdrop-blur-sm p-6 rounded-xl border border-cyan-400 border-opacity-20">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-2xl font-bold text-cyan-400">Python Backend Developer</h3>
+                            <span class="text-gray-400">Jan 2025 - Present</span>
+                        </div>
+                        <p class="text-lg text-purple-400 mb-4">Freelance | Remote</p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Delivered 4+ production-grade backend projects including REST APIs, microservices, and AI-powered platforms</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Developed scalable systems using Django/Flask with PostgreSQL, Redis caching, and Celery for async tasks</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Containerized and deployed applications using Docker with multi-stage builds and Docker Compose</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Integrated secure payment gateways (PayPal, Paymob, Stripe) and optimized database performance</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item fade-in">
+                    <div class="bg-black bg-opacity-50 backdrop-blur-sm p-6 rounded-xl border border-purple-400 border-opacity-20">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <h3 class="text-2xl font-bold text-purple-400">Python & DevOps Intern</h3>
+                            <span class="text-gray-400">Jul 2025 - Nov 2025</span>
+                        </div>
+                        <p class="text-lg text-cyan-400 mb-4">Information Technology Institute (ITI) | 5-month Intensive Full-Time Program</p>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Hands-on training in cloud-native development, infrastructure automation, and container orchestration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Built and deployed applications on AWS EKS with automated CI/CD pipelines and infrastructure as code</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                                <span>Core Technologies: Linux, Docker, Kubernetes (EKS), Jenkins CI/CD, Terraform (IaC), Ansible, Helm, AWS, Prometheus, NGINX, GitOps (ArgoCD)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+                Education & <span class="text-gradient">Certifications</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="skill-card p-8 rounded-xl mb-8 fade-in">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Bachelor's of Computer Science</h3>
+                            <p class="text-cyan-400 text-lg">Arab Open University</p>
+                            <p class="text-gray-400">Sep 2020 - July 2024 | GPA: 3.15/4.0</p>
+                        </div>
+                        <i class="fas fa-graduation-cap text-5xl text-cyan-400"></i>
+                    </div>
+                    <div class="mt-4 p-4 bg-black bg-opacity-50 rounded-lg">
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-purple-400">Graduation Project:</strong> Tripey Travel Planner (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask microservices backend
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Certifications</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="skill-card p-6 rounded-xl text-center">
+                            <i class="fab fa-redhat text-5xl mb-4 text-red-500"></i>
+                            <h4 class="font-bold mb-2">Red Hat System Administration I</h4>
+                            <p class="text-sm text-gray-400">RH124 - 2025</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-xl text-center">
+                            <i class="fas fa-dharmachakra text-5xl mb-4 text-blue-400"></i>
+                            <h4 class="font-bold mb-2">CKAD</h4>
+                            <p class="text-sm text-gray-400">Ongoing</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-xl text-center">
+                            <i class="fab fa-aws text-5xl mb-4 text-orange-400"></i>
+                            <h4 class="font-bold mb-2">AWS Certified Developer</h4>
+                            <p class="text-sm text-gray-400">Associate - Ongoing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 fade-in">
+                Let's Build Something <span class="text-gradient">Together</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 fade-in">Have a project in mind? Let's connect!</p>
+
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="fade-in">
+                    <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Email</p>
+                                <a href="mailto:rami.adel.shawky@gmail.com" class="text-lg hover:text-cyan-400 transition-colors">
+                                    rami.adel.shawky@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-green-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-green-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Phone</p>
+                                <a href="tel:+201553963637" class="text-lg hover:text-green-400 transition-colors">
+                                    +20 1553963637
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-purple-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">LinkedIn</p>
+                                <a href="https://linkedin.com/in/ramiadell" target="_blank" class="text-lg hover:text-purple-400 transition-colors">
+                                    linkedin.com/in/ramiadell
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                                <i class="fab fa-github text-gray-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">GitHub</p>
+                                <a href="https://github.com/ramiadell" target="_blank" class="text-lg hover:text-gray-400 transition-colors">
+                                    github.com/ramiadell
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <form class="contact-form space-y-6">
+                        <div>
+                            <input type="text" placeholder="Your Name" required
+                                class="w-full px-4 py-3 rounded-lg">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" required
+                                class="w-full px-4 py-3 rounded-lg">
+                        </div>
+                        <div>
+                            <textarea rows="5" placeholder="Your Message" required
+                                class="w-full px-4 py-3 rounded-lg resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-white relative">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">
+                &copy; 2025 Rami Adel Shawky. Built with passion and code.
+            </p>
+            <div class="flex gap-6 justify-center mt-4">
+                <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon hover:text-cyan-400">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://github.com/ramiadell" target="_blank" class="social-icon hover:text-cyan-400">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon hover:text-cyan-400">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up text-white text-xl"></i>
+    </div>
+
+    <script>
+        const typingTexts = [
+            "Building Scalable Systems",
+            "Cloud-Native Architecture",
+            "Python & Kubernetes Expert",
+            "DevOps & CI/CD Automation"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function type() {
+            const currentText = typingTexts[textIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typingTexts.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(type, typingSpeed);
+        }
+
+        setTimeout(type, 500);
+
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (target === 85 ? '' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (target === 85 ? '' : '+');
+                }
+            }, 20);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(el => statsObserver.observe(el));
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width + '%';
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.progress-bar').forEach(el => progressObserver.observe(el));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('sticky-header');
+            } else {
+                navbar.classList.remove('sticky-header');
+            }
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('text-cyan-400'));
+                this.classList.add('text-cyan-400');
+            });
+        });
+    </script>
+</body>
+</html>
