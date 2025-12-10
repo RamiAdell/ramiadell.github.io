@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rami Adel Shawky - Backend Engineer & Cloud Developer</title>
+    <title>Rami Adel Shawky - Backend Engineer & DevOps Specialist</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,6 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 4px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,19 +33,31 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            animation: gradientBg 15s ease infinite;
             color: #e5e5e5;
             overflow-x: hidden;
         }
 
+        @keyframes gradientBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .gradient-bg {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #0a0a0a 100%);
             background-size: 200% 200%;
             animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
         }
 
         @keyframes gradientShift {
@@ -42,104 +67,194 @@
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #00d4ff 0%, #a855f7 50%, #10b981 100%);
+            background: linear-gradient(120deg, #00d4ff 0%, #0099ff 25%, #a855f7 60%, #10b981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             background-size: 200% 200%;
-            animation: gradientShift 8s ease infinite;
+            animation: gradientFlow 8s ease infinite;
         }
 
-        .fade-in {
+        @keyframes gradientFlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .fade-in-up {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .fade-in.visible {
+        .fade-in-up.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .typing-cursor::after {
             content: '|';
             animation: blink 1s infinite;
+            color: #00d4ff;
         }
 
         @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-
-        .scroll-indicator {
-            animation: bounce 2s infinite;
+            0%, 49%, 100% { opacity: 1; }
+            50%, 99% { opacity: 0; }
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
+            50% { transform: translateY(15px); }
+        }
+
+        .scroll-indicator {
+            animation: bounce 2.5s ease-in-out infinite;
+        }
+
+        @keyframes float-bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
         }
 
         .progress-bar {
-            transition: width 1.5s ease;
+            transition: width 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(90deg, #00d4ff, #0099ff, #a855f7);
+            background-size: 200% 100%;
         }
 
         .skill-card {
-            background: rgba(26, 26, 46, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
         }
 
         .skill-card:hover {
             border-color: rgba(0, 212, 255, 0.5);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
         }
 
         .project-card {
-            background: rgba(26, 26, 46, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(168, 85, 247, 0.1);
-            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
+            group: project;
         }
 
         .project-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.5s ease;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.08), transparent);
+            transform: translateX(-100%) translateY(-100%);
+            transition: all 0.7s ease;
         }
 
         .project-card:hover::before {
-            left: 100%;
+            transform: translateX(100%) translateY(100%);
         }
 
         .project-card:hover {
-            border-color: rgba(168, 85, 247, 0.5);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+            border-color: rgba(0, 212, 255, 0.5);
+            background: rgba(0, 212, 255, 0.03);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-icon {
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 40px;
+            padding-left: 50px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 10px;
+            top: 30px;
             bottom: -30px;
             width: 2px;
-            background: linear-gradient(180deg, #00d4ff, #a855f7);
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.8), rgba(168, 85, 247, 0.4), transparent);
+            transition: background 0.6s ease;
         }
 
         .timeline-item::after {
@@ -147,11 +262,18 @@
             position: absolute;
             left: -6px;
             top: 0;
-            width: 14px;
-            height: 14px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background: #00d4ff;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            animation: pulse-ring 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            transform: scale(1.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
         }
 
         .timeline-item:last-child::before {
@@ -159,9 +281,33 @@
         }
 
         .sticky-header {
-            backdrop-filter: blur(10px);
-            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.85);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
             transition: all 0.3s ease;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #a855f7);
+            transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
         }
 
         .back-to-top {
@@ -180,6 +326,9 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
         }
 
         .back-to-top.visible {
@@ -188,89 +337,77 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5);
         }
 
-        /* Mobile menu slide animation */
-        .mobile-menu {
-            position: absolute; /* remove from document flow so it doesn't change nav height */
-            top: 100%;
-            left: 0;
-            right: 0;
-            z-index: 49;
-            background: rgba(10, 10, 10, 0.95);
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(-8px);
-            transition: max-height 320ms cubic-bezier(.2,.8,.2,1), opacity 220ms ease, transform 220ms ease, padding 220ms ease;
-            padding-top: 0; /* no padding when closed */
-            padding-bottom: 0;
-        }
-
-        .mobile-menu.open {
-            max-height: 1000px; /* large enough to fit menu */
-            opacity: 1;
-            transform: translateY(0);
-            padding-top: 1rem; /* restore spacing when open */
-            padding-bottom: 1rem;
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translate(var(--tx), -100vh) rotate(360deg); opacity: 0; }
         }
 
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(0, 212, 255, 0.5);
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 212, 255, 0.6);
             border-radius: 50%;
-            animation: float 20s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translate(100px, -1000px);
-                opacity: 0;
-            }
+            animation: float 20s infinite linear;
         }
 
         .contact-form input,
         .contact-form textarea {
-            background: rgba(26, 26, 46, 0.5);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 212, 255, 0.2);
             color: #e5e5e5;
             transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(229, 229, 229, 0.4);
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
-            border-color: rgba(0, 212, 255, 0.6);
+            border-color: rgba(0, 212, 255, 0.8);
+            background: rgba(0, 212, 255, 0.05);
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
         }
 
         .social-icon {
-            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .social-icon:hover {
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-8px) scale(1.15);
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #00d4ff, #a855f7);
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #00d4ff, #0099ff, #a855f7);
+            background-size: 200% 100%;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .btn-primary::before {
@@ -281,9 +418,10 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
             transform: translate(-50%, -50%);
             transition: width 0.6s ease, height 0.6s ease;
+            z-index: 0;
         }
 
         .btn-primary:hover::before {
@@ -292,90 +430,288 @@
         }
 
         .btn-primary:hover {
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            background-position: 100% 0;
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.6);
+            color: #e5e5e5;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
             transform: translateY(-2px);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-nav-toggle {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-toggle span {
+            width: 100%;
+            height: 2px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 40;
+        }
+
+        .mobile-menu.open {
+            max-height: 400px;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 15px 24px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mobile-menu a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, #00d4ff, #a855f7);
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu a:hover::before {
+            transform: scaleY(1);
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(0, 212, 255, 0.05);
+            padding-left: 32px;
+        }
+
+        @keyframes mesh-gradient {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 0%; }
+            75% { background-position: 0% 0%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes orb-float {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            25% { transform: translate(50px, -80px) scale(1.2); opacity: 0.3; }
+            50% { transform: translate(100px, 0) scale(0.8); opacity: 0.5; }
+            75% { transform: translate(-30px, 100px) scale(1.1); opacity: 0.3; }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6)); }
+            50% { filter: drop-shadow(0 0 60px rgba(0, 212, 255, 1)); }
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            animation: mesh-gradient 15s ease infinite;
+            pointer-events: none;
+        }
+
+        .project-expand-btn {
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            border: none;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-expand-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .project-expand-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .project-expand-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+        }
+
+        .hidden-projects {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .hidden-projects.show {
+            max-height: 2000px;
         }
 
         @media (max-width: 768px) {
             .stat-number {
                 font-size: 2rem;
             }
+
+            body {
+                background-size: 200% 200%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
-    <!-- Favicon -->
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="shortcut icon" href="assets/favicon.svg" type="image/svg+xml">
-    <meta name="theme-color" content="#0a0a0a">
 </head>
 <body>
     <nav id="navbar" class="fixed top-0 w-full z-50 py-4 transition-all duration-300">
         <div class="container mx-auto px-6 flex items-center justify-between">
-            <a href="#home" class="text-2xl font-bold text-gradient">R.A</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
-                <a href="#skills" class="nav-link hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#projects" class="nav-link hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#experience" class="nav-link hover:text-cyan-400 transition-colors">Experience</a>
-                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
+            <a href="#home" class="text-3xl font-bold text-gradient">Rami<span class="text-cyan-400">.</span></a>
+
+            <div class="hidden md:flex space-x-1">
+                <a href="#home" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#projects" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#contact" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Contact</a>
             </div>
-            <button id="mobile-menu-btn" class="md:hidden text-2xl" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
+
+            <button id="mobile-menu-btn" class="md:hidden">
+                <div class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </button>
         </div>
-        <div id="mobile-menu" class="mobile-menu md:hidden" aria-hidden="true">
-            <div class="flex flex-col space-y-4 px-6">
-                <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
-                <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
-            </div>
+
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
         <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
 
         <div class="container mx-auto px-6 text-center z-10">
-            <div class="fade-in">
-                <h1 class="text-5xl md:text-7xl font-bold mb-4">
+            <div class="fade-in-up">
+                <div class="mb-6">
+                    <p class="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4">Welcome to my portfolio</p>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                     Rami Adel Shawky
                 </h1>
-                <h2 class="text-2xl md:text-4xl text-gradient mb-6">
-                    Python Backend Engineer & Cloud Developer
-                </h2>
-                <p id="typing-text" class="text-lg md:text-xl mb-8 h-16 typing-cursor"></p>
 
-                <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
-                    <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-semibold text-white relative z-10">
-                        View Projects
+                <h2 class="text-2xl md:text-4xl text-gradient mb-8 font-semibold">
+                    Backend Engineer & DevOps Specialist
+                </h2>
+
+                <p id="typing-text" class="text-lg md:text-xl mb-12 h-20 typing-cursor text-cyan-400"></p>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
+                    <a href="#projects" class="btn-primary px-8 py-4 rounded-lg font-semibold text-white relative z-10 inline-block">
+                        View My Work
                     </a>
-                    <a href="assets/Rami%20Adel.pdf" download class="px-8 py-4 rounded-full font-semibold border-2 border-cyan-400 hover:bg-cyan-400 hover:text-black transition-all">
+                    <a href="public/70__ats_rating_resume_template_(15).pdf" download class="btn-secondary px-8 py-4 rounded-lg font-semibold inline-block">
                         Download CV
                     </a>
                 </div>
 
-                <div class="flex gap-6 justify-center mb-12">
-                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon text-3xl hover:text-cyan-400">
-                        <i class="fab fa-linkedin"></i>
+                <div class="flex gap-4 justify-center mb-16">
+                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin text-lg"></i>
                     </a>
-                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon text-3xl hover:text-cyan-400">
-                        <i class="fab fa-github"></i>
+                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon">
+                        <i class="fab fa-github text-lg"></i>
                     </a>
-                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon text-3xl hover:text-cyan-400">
-                        <i class="fas fa-envelope"></i>
+                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope text-lg"></i>
                     </a>
                 </div>
 
                 <div class="scroll-indicator">
-                    <a href="#about" class="text-cyan-400 text-4xl">
+                    <a href="#about" class="text-cyan-400 text-3xl inline-block">
                         <i class="fas fa-chevron-down"></i>
                     </a>
                 </div>
@@ -383,169 +719,179 @@
         </div>
     </section>
 
-    <section id="about" class="py-20 bg-black">
+    <section id="about" class="py-28 bg-black relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 About <span class="text-gradient">Me</span>
             </h2>
 
-            <div class="max-w-4xl mx-auto mb-16 fade-in">
-                <p class="text-lg leading-relaxed mb-6">
-                    Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs, microservices architectures, and deploying applications with CI/CD automation.
-                </p>
-                <p class="text-lg leading-relaxed">
-                    Proficient in database design, caching strategies, and cloud-native deployment patterns. Passionate about building scalable systems and automating infrastructure.
-                </p>
+            <div class="max-w-4xl mx-auto mb-20 fade-in-up">
+                <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 border border-cyan-400/20 rounded-lg p-8 md:p-12 backdrop-blur-xl">
+                    <p class="text-lg leading-relaxed mb-6 text-gray-200">
+                        Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs, microservices architectures, and deploying applications with CI/CD automation.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-200">
+                        Proficient in database design, caching strategies, and cloud-native deployment patterns. Passionate about building scalable systems and automating infrastructure to drive innovation.
+                    </p>
+                </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="skill-card p-8 rounded-xl text-center fade-in">
-                    <div class="stat-number text-gradient mb-2" data-target="4">0</div>
-                    <p class="text-gray-400">Projects Delivered</p>
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="4">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">Projects Delivered</p>
                 </div>
-                <div class="skill-card p-8 rounded-xl text-center fade-in">
-                    <div class="stat-number text-gradient mb-2" data-target="5">0</div>
-                    <p class="text-gray-400">Months ITI Training</p>
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="5">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">Months ITI Training</p>
                 </div>
-                <div class="skill-card p-8 rounded-xl text-center fade-in">
-                    <div class="stat-number text-gradient mb-2" data-target="85">0</div>
-                    <p class="text-gray-400">% Release Time Reduction</p>
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="85">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">% Release Time Reduction</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-20 gradient-bg">
+    <section id="skills" class="py-28 gradient-bg relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 Technical <span class="text-gradient">Skills</span>
             </h2>
 
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-12 fade-in">
-                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Languages</h3>
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-code text-3xl"></i> Languages
+                    </h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-python text-4xl mb-2 text-cyan-400"></i>
-                            <p class="text-sm">Python</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-python text-5xl mb-3 text-cyan-400"></i>
+                            <p class="text-sm font-semibold">Python</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-js text-4xl mb-2 text-yellow-400"></i>
-                            <p class="text-sm">JavaScript</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-js text-5xl mb-3 text-yellow-400"></i>
+                            <p class="text-sm font-semibold">JavaScript</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-database text-4xl mb-2 text-blue-400"></i>
-                            <p class="text-sm">SQL</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-database text-5xl mb-3 text-blue-400"></i>
+                            <p class="text-sm font-semibold">SQL</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-terminal text-4xl mb-2 text-green-400"></i>
-                            <p class="text-sm">Bash</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-terminal text-5xl mb-3 text-green-400"></i>
+                            <p class="text-sm font-semibold">Bash</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-java text-4xl mb-2 text-red-400"></i>
-                            <p class="text-sm">Java</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-java text-5xl mb-3 text-red-400"></i>
+                            <p class="text-sm font-semibold">Java</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-code text-4xl mb-2 text-blue-500"></i>
-                            <p class="text-sm">Dart</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-code text-5xl mb-3 text-blue-500"></i>
+                            <p class="text-sm font-semibold">Dart</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-html5 text-4xl mb-2 text-orange-400"></i>
-                            <p class="text-sm">HTML/CSS</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-12 fade-in">
-                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Backend Frameworks</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="skill-card p-6 rounded-lg">
-                            <i class="fas fa-server text-3xl mb-2 text-green-400"></i>
-                            <p class="font-semibold">Django</p>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
-                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-green-400 h-2 rounded-full" style="width: 0%" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <i class="fas fa-cogs text-3xl mb-2 text-blue-400"></i>
-                            <p class="font-semibold">DRF</p>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
-                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full" style="width: 0%" data-width="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <i class="fas fa-flask text-3xl mb-2 text-gray-400"></i>
-                            <p class="font-semibold">Flask</p>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
-                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-gray-400 h-2 rounded-full" style="width: 0%" data-width="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <i class="fas fa-bolt text-3xl mb-2 text-teal-400"></i>
-                            <p class="font-semibold">FastAPI</p>
-                            <div class="w-full bg-gray-700 rounded-full h-2 mt-3">
-                                <div class="progress-bar bg-gradient-to-r from-cyan-400 to-teal-400 h-2 rounded-full" style="width: 0%" data-width="85"></div>
-                            </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-html5 text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">HTML/CSS</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-12 fade-in">
-                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Databases</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-database text-4xl mb-2 text-blue-500"></i>
-                            <p class="text-sm">PostgreSQL</p>
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-server text-3xl"></i> Backend Frameworks
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-server text-4xl mb-3 text-green-400"></i>
+                            <p class="font-semibold mb-4">Django</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-database text-4xl mb-2 text-orange-400"></i>
-                            <p class="text-sm">MySQL</p>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-cogs text-4xl mb-3 text-blue-400"></i>
+                            <p class="font-semibold mb-4">DRF</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-database text-4xl mb-2 text-red-500"></i>
-                            <p class="text-sm">Redis</p>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-flask text-4xl mb-3 text-gray-400"></i>
+                            <p class="font-semibold mb-4">Flask</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 0%" data-width="90"></div>
+                            </div>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-exchange-alt text-4xl mb-2 text-orange-500"></i>
-                            <p class="text-sm">RabbitMQ</p>
+                        <div class="skill-card p-6 rounded-lg">
+                            <i class="fas fa-bolt text-4xl mb-3 text-teal-400"></i>
+                            <p class="font-semibold mb-4">FastAPI</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar h-2 rounded-full" style="width: 0%" data-width="85"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-12 fade-in">
-                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">DevOps & Cloud</h3>
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-database text-3xl"></i> Databases
+                    </h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-docker text-4xl mb-2 text-blue-400"></i>
-                            <p class="text-sm">Docker</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-database text-5xl mb-3 text-blue-500"></i>
+                            <p class="text-sm font-semibold">PostgreSQL</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-dharmachakra text-4xl mb-2 text-blue-500"></i>
-                            <p class="text-sm">Kubernetes</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-database text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">MySQL</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-aws text-4xl mb-2 text-orange-400"></i>
-                            <p class="text-sm">AWS</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-database text-5xl mb-3 text-red-500"></i>
+                            <p class="text-sm font-semibold">Redis</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-code-branch text-4xl mb-2 text-purple-400"></i>
-                            <p class="text-sm">Terraform</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-exchange-alt text-5xl mb-3 text-orange-500"></i>
+                            <p class="text-sm font-semibold">RabbitMQ</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-project-diagram text-4xl mb-2 text-red-400"></i>
-                            <p class="text-sm">Jenkins</p>
+                    </div>
+                </div>
+
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-cloud text-3xl"></i> DevOps & Cloud
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-docker text-5xl mb-3 text-blue-400"></i>
+                            <p class="text-sm font-semibold">Docker</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-sync text-4xl mb-2 text-orange-500"></i>
-                            <p class="text-sm">ArgoCD</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-dharmachakra text-5xl mb-3 text-blue-500"></i>
+                            <p class="text-sm font-semibold">Kubernetes</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fab fa-git-alt text-4xl mb-2 text-orange-600"></i>
-                            <p class="text-sm">Git</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-aws text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">AWS</p>
                         </div>
-                        <div class="skill-card p-4 rounded-lg text-center">
-                            <i class="fas fa-chart-line text-4xl mb-2 text-orange-400"></i>
-                            <p class="text-sm">Prometheus</p>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-code-branch text-5xl mb-3 text-purple-400"></i>
+                            <p class="text-sm font-semibold">Terraform</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-project-diagram text-5xl mb-3 text-red-400"></i>
+                            <p class="text-sm font-semibold">Jenkins</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-sync text-5xl mb-3 text-orange-500"></i>
+                            <p class="text-sm font-semibold">ArgoCD</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-git-alt text-5xl mb-3 text-orange-600"></i>
+                            <p class="text-sm font-semibold">Git</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-chart-line text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">Prometheus</p>
                         </div>
                     </div>
                 </div>
@@ -553,150 +899,202 @@
         </div>
     </section>
 
-    <section id="projects" class="py-20 bg-black">
+    <section id="projects" class="py-28 bg-black relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 Featured <span class="text-gradient">Projects</span>
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div class="project-card p-8 rounded-xl fade-in">
-                    <div class="flex items-start justify-between mb-4">
-                        <i class="fas fa-cloud text-4xl text-cyan-400"></i>
-                        <a href="https://github.com/BIGRS-ITI" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-cloud text-5xl text-cyan-400 project-icon"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">BIGRS - Cloud-Native Platform</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
                         Production-grade multi-AZ platform with GitOps workflow, reducing release time by 85%
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">AWS EKS</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">Terraform</span>
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">ArgoCD</span>
-                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Jenkins</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Kubernetes</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">AWS EKS</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Terraform</span>
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Jenkins</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
                     </div>
                 </div>
 
-                <div class="project-card p-8 rounded-xl fade-in">
-                    <div class="flex items-start justify-between mb-4">
-                        <i class="fas fa-university text-4xl text-green-400"></i>
-                        <a href="https://github.com/RamiAdell/secure-fintech-banking-api/" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-university text-5xl text-green-400 project-icon"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Banking FinTech API</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
                         Secure banking API with JWT auth, 2FA, KYC verification, and 8+ orchestrated microservices
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Django</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">DRF</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Celery</span>
-                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm">Redis</span>
-                        <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-sm">Docker</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">DRF</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Celery</span>
+                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Redis</span>
+                        <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">Docker</span>
                     </div>
                 </div>
 
-                <div class="project-card p-8 rounded-xl fade-in">
-                    <div class="flex items-start justify-between mb-4">
-                        <i class="fas fa-video text-4xl text-purple-400"></i>
-                        <a href="https://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-video text-5xl text-purple-400 project-icon"></i>
+                        <a href="http://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
                             <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">NexMediaAI.com</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
                         AI SaaS platform for subscription-based video captioning and translation with payment integration
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Django</span>
-                        <span class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-sm">Flask</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">Microservices</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Docker</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">CI/CD</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-xs font-semibold">Flask</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Microservices</span>
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Docker</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">CI/CD</span>
                     </div>
                 </div>
 
-                <div class="project-card p-8 rounded-xl fade-in">
-                    <div class="flex items-start justify-between mb-4">
-                        <i class="fas fa-rocket text-4xl text-orange-400"></i>
-                        <a href="https://github.com/ibrahemyasser/3Tier-deployment-with-ArgoCd" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-rocket text-5xl text-orange-400 project-icon"></i>
+                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">Skypoint - 3-Tier K8s Deployment</h3>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
                         Production-ready GitOps deployment with self-healing rollbacks and multi-environment support
                     </p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Kubernetes</span>
-                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm">ArgoCD</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">GitOps</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">NGINX</span>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
+                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">GitOps</span>
+                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">NGINX</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full flex justify-center my-12 fade-in-up">
+                <button id="expand-projects-btn" class="project-expand-btn">
+                    Show 2 More Projects <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+            </div>
+
+            <div id="hidden-projects" class="hidden-projects">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <div class="project-card p-8 rounded-xl fade-in-up">
+                        <div class="flex items-start justify-between mb-6">
+                            <i class="fas fa-shopping-cart text-5xl text-indigo-400 project-icon"></i>
+                            <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-indigo-400 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Multi-Vendor E-Commerce</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            Full-stack marketplace platform with vendor management, product listings, orders, and payment processing. Real-time notifications and admin dashboard for analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">React</span>
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Stripe</span>
+                            <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">WebSocket</span>
+                            <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card p-8 rounded-xl fade-in-up">
+                        <div class="flex items-start justify-between mb-6">
+                            <i class="fas fa-tv text-5xl text-pink-400 project-icon"></i>
+                            <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-pink-400 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Streaming Channel API</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            High-performance FastAPI backend for video streaming platform with content management, user subscriptions, adaptive bitrate streaming, and real-time analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-teal-400 bg-opacity-20 text-teal-400 rounded-full text-xs font-semibold">FastAPI</span>
+                            <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-orange-500 bg-opacity-20 text-orange-500 rounded-full text-xs font-semibold">Redis Cache</span>
+                            <span class="px-3 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 rounded-full text-xs font-semibold">FFmpeg</span>
+                            <span class="px-3 py-1 bg-red-500 bg-opacity-20 text-red-500 rounded-full text-xs font-semibold">Celery</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">S3 Storage</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-20 gradient-bg">
+    <section id="experience" class="py-28 gradient-bg relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 <span class="text-gradient">Experience</span>
             </h2>
 
             <div class="max-w-4xl mx-auto">
-                <div class="timeline-item mb-12 fade-in">
-                    <div class="bg-black bg-opacity-50 backdrop-blur-sm p-6 rounded-xl border border-cyan-400 border-opacity-20">
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                <div class="timeline-item mb-16 fade-in-left">
+                    <div class="bg-gradient-to-r from-cyan-400/10 to-cyan-400/5 backdrop-blur-xl p-8 rounded-lg border border-cyan-400/20">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <h3 class="text-2xl font-bold text-cyan-400">Python Backend Developer</h3>
-                            <span class="text-gray-400">Jan 2025 - Present</span>
+                            <span class="text-gray-400 text-sm">Jan 2025 - Present</span>
                         </div>
-                        <p class="text-lg text-purple-400 mb-4">Freelance | Remote</p>
-                        <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                        <p class="text-lg text-purple-400 mb-6 font-semibold">Freelance | Remote</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Delivered 4+ production-grade backend projects including REST APIs, microservices, and AI-powered platforms</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Developed scalable systems using Django/Flask with PostgreSQL, Redis caching, and Celery for async tasks</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Containerized and deployed applications using Docker with multi-stage builds and Docker Compose</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Integrated secure payment gateways (PayPal, Paymob, Stripe) and optimized database performance</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item fade-in">
-                    <div class="bg-black bg-opacity-50 backdrop-blur-sm p-6 rounded-xl border border-purple-400 border-opacity-20">
-                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                <div class="timeline-item fade-in-right">
+                    <div class="bg-gradient-to-r from-purple-400/10 to-purple-400/5 backdrop-blur-xl p-8 rounded-lg border border-purple-400/20">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <h3 class="text-2xl font-bold text-purple-400">Python & DevOps Intern</h3>
-                            <span class="text-gray-400">Jul 2025 - Nov 2025</span>
+                            <span class="text-gray-400 text-sm">Jul 2025 - Nov 2025</span>
                         </div>
-                        <p class="text-lg text-cyan-400 mb-4">Information Technology Institute (ITI) | 5-month Intensive Full-Time Program</p>
-                        <ul class="space-y-2 text-gray-300">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                        <p class="text-lg text-cyan-400 mb-6 font-semibold">Information Technology Institute (ITI) | 5-month Intensive Full-Time Program</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Hands-on training in cloud-native development, infrastructure automation, and container orchestration</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Built and deployed applications on AWS EKS with automated CI/CD pipelines and infrastructure as code</span>
                             </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
                                 <span>Core Technologies: Linux, Docker, Kubernetes (EKS), Jenkins CI/CD, Terraform (IaC), Ansible, Helm, AWS, Prometheus, NGINX, GitOps (ArgoCD)</span>
                             </li>
                         </ul>
@@ -706,45 +1104,47 @@
         </div>
     </section>
 
-    <section id="education" class="py-20 bg-black">
+    <section id="education" class="py-28 bg-black">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 fade-in">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 Education & <span class="text-gradient">Certifications</span>
             </h2>
 
             <div class="max-w-4xl mx-auto">
-                <div class="skill-card p-8 rounded-xl mb-8 fade-in">
-                    <div class="flex items-start justify-between mb-4">
+                <div class="skill-card p-8 md:p-12 rounded-lg mb-12 fade-in-up">
+                    <div class="flex items-start justify-between gap-6">
                         <div>
-                            <h3 class="text-2xl font-bold mb-2">Bachelor's of Computer Science</h3>
-                            <p class="text-cyan-400 text-lg">Arab Open University</p>
+                            <h3 class="text-2xl font-bold mb-3">Bachelor's of Computer Science</h3>
+                            <p class="text-cyan-400 text-lg font-semibold mb-2">Arab Open University</p>
                             <p class="text-gray-400">Sep 2020 - July 2024 | GPA: 3.15/4.0</p>
                         </div>
-                        <i class="fas fa-graduation-cap text-5xl text-cyan-400"></i>
+                        <i class="fas fa-graduation-cap text-6xl text-cyan-400 flex-shrink-0"></i>
                     </div>
-                    <div class="mt-4 p-4 bg-black bg-opacity-50 rounded-lg">
+                    <div class="mt-6 p-6 bg-black bg-opacity-40 rounded-lg border-l-4 border-cyan-400">
                         <p class="text-sm text-gray-300">
-                            <strong class="text-purple-400">Graduation Project:</strong> Tripey Travel Planner (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask microservices backend
+                            <strong class="text-cyan-400 block mb-2">Graduation Project:</strong> Tripey Travel Planner (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask microservices backend
                         </p>
                     </div>
                 </div>
 
-                <div class="fade-in">
-                    <h3 class="text-2xl font-semibold mb-6 text-cyan-400">Certifications</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="skill-card p-6 rounded-xl text-center">
-                            <i class="fab fa-redhat text-5xl mb-4 text-red-500"></i>
-                            <h4 class="font-bold mb-2">Red Hat System Administration I</h4>
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-certificate text-3xl"></i> Certifications
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="skill-card p-8 rounded-lg text-center">
+                            <i class="fab fa-redhat text-6xl mb-4 text-red-500"></i>
+                            <h4 class="font-bold mb-2 text-lg">Red Hat System</h4>
                             <p class="text-sm text-gray-400">RH124 - 2025</p>
                         </div>
-                        <div class="skill-card p-6 rounded-xl text-center">
-                            <i class="fas fa-dharmachakra text-5xl mb-4 text-blue-400"></i>
-                            <h4 class="font-bold mb-2">CKAD</h4>
+                        <div class="skill-card p-8 rounded-lg text-center">
+                            <i class="fas fa-dharmachakra text-6xl mb-4 text-blue-400"></i>
+                            <h4 class="font-bold mb-2 text-lg">CKAD</h4>
                             <p class="text-sm text-gray-400">Ongoing</p>
                         </div>
-                        <div class="skill-card p-6 rounded-xl text-center">
-                            <i class="fab fa-aws text-5xl mb-4 text-orange-400"></i>
-                            <h4 class="font-bold mb-2">AWS Certified Developer</h4>
+                        <div class="skill-card p-8 rounded-lg text-center">
+                            <i class="fab fa-aws text-6xl mb-4 text-orange-400"></i>
+                            <h4 class="font-bold mb-2 text-lg">AWS Developer</h4>
                             <p class="text-sm text-gray-400">Associate - Ongoing</p>
                         </div>
                     </div>
@@ -753,81 +1153,72 @@
         </div>
     </section>
 
-    <section id="contact" class="py-20 gradient-bg">
+    <section id="contact" class="py-28 gradient-bg relative">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 fade-in">
-                Let's Build Something <span class="text-gradient">Together</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 fade-in-up">
+                Let's Build Something <span class="text-gradient">Amazing</span>
             </h2>
-            <p class="text-center text-gray-400 mb-12 fade-in">Have a project in mind? Let's connect!</p>
+            <p class="text-center text-gray-400 mb-20 fade-in-up text-lg">Have a project in mind? Let's connect and create something extraordinary together!</p>
 
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="fade-in">
-                    <h3 class="text-2xl font-bold mb-6">Get In Touch</h3>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="fade-in-left">
+                    <h3 class="text-2xl font-bold mb-10">Get In Touch</h3>
                     <div class="space-y-6">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                        <a href="mailto:rami.adel.shawky@gmail.com" class="flex items-center gap-4 p-4 rounded-lg hover:bg-cyan-400/10 transition-all group">
+                            <div class="w-14 h-14 bg-cyan-400/20 rounded-full flex items-center justify-center group-hover:bg-cyan-400/30 transition-all">
                                 <i class="fas fa-envelope text-cyan-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400">Email</p>
-                                <a href="mailto:rami.adel.shawky@gmail.com" class="text-lg hover:text-cyan-400 transition-colors">
-                                    rami.adel.shawky@gmail.com
-                                </a>
+                                <p class="font-semibold group-hover:text-cyan-400 transition-colors">rami.adel.shawky@gmail.com</p>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                        </a>
+                        <a href="tel:+201553963637" class="flex items-center gap-4 p-4 rounded-lg hover:bg-green-400/10 transition-all group">
+                            <div class="w-14 h-14 bg-green-400/20 rounded-full flex items-center justify-center group-hover:bg-green-400/30 transition-all">
                                 <i class="fas fa-phone text-green-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400">Phone</p>
-                                <a href="tel:+201553963637" class="text-lg hover:text-green-400 transition-colors">
-                                    +20 1553963637
-                                </a>
+                                <p class="font-semibold group-hover:text-green-400 transition-colors">+20 1553963637</p>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-purple-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                        </a>
+                        <a href="https://linkedin.com/in/ramiadell" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-purple-400/10 transition-all group">
+                            <div class="w-14 h-14 bg-purple-400/20 rounded-full flex items-center justify-center group-hover:bg-purple-400/30 transition-all">
                                 <i class="fab fa-linkedin text-purple-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400">LinkedIn</p>
-                                <a href="https://linkedin.com/in/ramiadell" target="_blank" class="text-lg hover:text-purple-400 transition-colors">
-                                    linkedin.com/in/ramiadell
-                                </a>
+                                <p class="font-semibold group-hover:text-purple-400 transition-colors">ramiadell</p>
                             </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-gray-400 bg-opacity-20 rounded-full flex items-center justify-center">
+                        </a>
+                        <a href="https://github.com/ramiadell" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-400/10 transition-all group">
+                            <div class="w-14 h-14 bg-gray-400/20 rounded-full flex items-center justify-center group-hover:bg-gray-400/30 transition-all">
                                 <i class="fab fa-github text-gray-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400">GitHub</p>
-                                <a href="https://github.com/ramiadell" target="_blank" class="text-lg hover:text-gray-400 transition-colors">
-                                    github.com/ramiadell
-                                </a>
+                                <p class="font-semibold group-hover:text-gray-400 transition-colors">ramiadell</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
-                <div class="fade-in">
-                    <form id="contactForm" class="contact-form space-y-6" action="https://formspree.io/f/xblnayyb" method="POST">
-                        <input type="hidden" name="_subject" value="New contact form submission">
+                <div class="fade-in-right">
+                    <form class="contact-form space-y-6">
                         <div>
-                            <input name="name" type="text" placeholder="Your Name" required
-                                class="w-full px-4 py-3 rounded-lg">
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Name</label>
+                            <input type="text" placeholder="Your Name" required class="w-full px-5 py-3 rounded-lg">
                         </div>
                         <div>
-                            <input name="email" type="email" placeholder="Your Email" required
-                                class="w-full px-4 py-3 rounded-lg">
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Email</label>
+                            <input type="email" placeholder="Your Email" required class="w-full px-5 py-3 rounded-lg">
                         </div>
                         <div>
-                            <textarea name="message" rows="5" placeholder="Your Message" required
-                                class="w-full px-4 py-3 rounded-lg resize-none"></textarea>
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Message</label>
+                            <textarea rows="5" placeholder="Your Message" required class="w-full px-5 py-3 rounded-lg resize-none"></textarea>
                         </div>
                         <button type="submit" class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-white relative">
-                            Send Message
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
                         </button>
                     </form>
                 </div>
@@ -835,37 +1226,54 @@
         </div>
     </section>
 
-    <footer class="bg-black py-8 border-t border-gray-800">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400">
-                &copy; 2025 Rami Adel Shawky. Built with passion and code.
-            </p>
-            <div class="flex gap-6 justify-center mt-4">
-                <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon hover:text-cyan-400">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-                <a href="https://github.com/ramiadell" target="_blank" class="social-icon hover:text-cyan-400">
-                    <i class="fab fa-github text-2xl"></i>
-                </a>
-                <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon hover:text-cyan-400">
-                    <i class="fas fa-envelope text-2xl"></i>
-                </a>
+    <footer class="bg-black py-12 border-t border-cyan-400/10 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-lg font-bold text-gradient mb-4">R.A.S</h3>
+                    <p class="text-gray-400 text-sm">Backend Engineer & DevOps Specialist crafting scalable solutions</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-cyan-400 mb-4">Quick Links</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#home" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a>
+                        <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors block">About</a>
+                        <a href="#projects" class="text-gray-400 hover:text-cyan-400 transition-colors block">Projects</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-cyan-400 mb-4">Follow</h4>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin text-sm"></i>
+                        </a>
+                        <a href="https://github.com/ramiadell" target="_blank" class="social-icon">
+                            <i class="fab fa-github text-sm"></i>
+                        </a>
+                        <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-cyan-400/10 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 Rami Adel Shawky. Crafted with passion and code.</p>
             </div>
         </div>
     </footer>
 
     <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up text-white text-xl"></i>
+        <i class="fas fa-arrow-up text-white"></i>
     </div>
 
     <script>
-            const typingTexts = [
-                "Building Scalable Systems",
-                "Cloud-Native Architecture",
-                "Python Backend Development",
-                "DevOps & CI/CD Enthusiast"
-            ];
-
+        const typingTexts = [
+            "Building Scalable Systems",
+            "Cloud-Native Architecture",
+            "Python & Kubernetes Expert",
+            "DevOps & CI/CD Automation"
+        ];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -883,13 +1291,13 @@
             }
 
             if (!isDeleting && charIndex === currentText.length) {
-                setTimeout(() => isDeleting = true, 2000);
+                setTimeout(() => isDeleting = true, 2500);
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 textIndex = (textIndex + 1) % typingTexts.length;
             }
 
-            const typingSpeed = isDeleting ? 50 : 100;
+            const typingSpeed = isDeleting ? 40 : 80;
             setTimeout(type, typingSpeed);
         }
 
@@ -897,32 +1305,43 @@
 
         function createParticles() {
             const container = document.getElementById('particles-container');
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = Math.random() * 100;
                 particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
                 particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                particle.style.animationDuration = (15 + Math.random() * 15) + 's';
                 container.appendChild(particle);
             }
         }
 
         createParticles();
 
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in').forEach(el => observer.observe(el));
 
         function animateCounter(element) {
             const target = parseInt(element.getAttribute('data-target'));
             let current = 0;
-            const increment = target / 100;
+            const increment = target / 60;
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= target) {
@@ -931,7 +1350,7 @@
                 } else {
                     element.textContent = Math.floor(current) + (target === 85 ? '' : '+');
                 }
-            }, 20);
+            }, 16);
         }
 
         const statsObserver = new IntersectionObserver((entries) => {
@@ -959,21 +1378,16 @@
 
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            const mobileMenu = document.getElementById('mobile-menu');
-            const menuOpen = mobileMenu && mobileMenu.classList.contains('open');
-            if (window.scrollY > 100) {
+            if (window.scrollY > 50) {
                 navbar.classList.add('sticky-header');
             } else {
-                // Only remove sticky-header when the mobile menu is NOT open
-                if (!menuOpen) {
-                    navbar.classList.remove('sticky-header');
-                }
+                navbar.classList.remove('sticky-header');
             }
         });
 
         const backToTop = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 600) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -986,24 +1400,21 @@
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
                     const mobileMenu = document.getElementById('mobile-menu');
-                    const mobileBtn = document.getElementById('mobile-menu-btn');
-                    // hide mobile menu if it's open
-                    if (mobileMenu && mobileMenu.classList.contains('open')) {
+                    if (mobileMenu.classList.contains('open')) {
                         mobileMenu.classList.remove('open');
-                        mobileMenu.setAttribute('aria-hidden', 'true');
-                        if (mobileBtn) {
-                            mobileBtn.setAttribute('aria-expanded', 'false');
-                            mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                        }
-                        // If we're not scrolled past the threshold, remove sticky header when closing
-                        if (navbar && window.scrollY <= 100) {
-                            navbar.classList.remove('sticky-header');
-                        }
+                        document.getElementById('mobile-menu-btn').querySelector('.mobile-nav-toggle').classList.remove('active');
                     }
                 }
             });
@@ -1013,99 +1424,30 @@
         const mobileMenu = document.getElementById('mobile-menu');
 
         mobileMenuBtn.addEventListener('click', () => {
-            if (!mobileMenu) return;
-            const isOpen = mobileMenu.classList.contains('open');
-            if (isOpen) {
-                mobileMenu.classList.remove('open');
-                mobileMenu.setAttribute('aria-hidden', 'true');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                // Only remove sticky header if user hasn't scrolled past threshold
-                if (navbar && window.scrollY <= 100) {
-                    navbar.classList.remove('sticky-header');
-                }
+            const toggle = mobileMenuBtn.querySelector('.mobile-nav-toggle');
+            mobileMenu.classList.toggle('open');
+            toggle.classList.toggle('active');
+        });
+
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        const expandBtn = document.getElementById('expand-projects-btn');
+        const hiddenProjects = document.getElementById('hidden-projects');
+
+        expandBtn.addEventListener('click', () => {
+            hiddenProjects.classList.toggle('show');
+            const icon = expandBtn.querySelector('i');
+            if (hiddenProjects.classList.contains('show')) {
+                expandBtn.innerHTML = 'Show Less Projects <i class="fas fa-chevron-up ml-2"></i>';
             } else {
-                mobileMenu.classList.add('open');
-                mobileMenu.setAttribute('aria-hidden', 'false');
-                mobileMenuBtn.setAttribute('aria-expanded', 'true');
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
-                // Make navbar appear as sticky when opening menu so menu has background in the home section
-                if (navbar) navbar.classList.add('sticky-header');
+                expandBtn.innerHTML = 'Show 2 More Projects <i class="fas fa-chevron-down ml-2"></i>';
             }
         });
-
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitButton ? submitButton.innerHTML : null;
-                if (submitButton) submitButton.disabled = true;
-                if (submitButton) submitButton.innerText = 'Sending...';
-
-                try {
-                    const response = await fetch(contactForm.action, {
-                        method: contactForm.method || 'POST',
-                        body: new FormData(contactForm),
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
-
-                    if (response.ok) {
-                        alert('Thank you for your message! I will get back to you soon.');
-                        contactForm.reset();
-                    } else {
-                        const data = await response.json().catch(() => ({}));
-                        const errorMessage = (data && data.error) ? data.error : 'There was an error sending your message. Please try again later.';
-                        alert(errorMessage);
-                    }
-                } catch (err) {
-                    alert('Network error. Please check your connection and try again.');
-                } finally {
-                    if (submitButton) {
-                        submitButton.disabled = false;
-                        if (originalText) submitButton.innerHTML = originalText;
-                    }
-                }
-            });
-        }
-
-        // Collect nav anchors from both the header and mobile menu
-        const navAnchors = document.querySelectorAll('#navbar a[href^="#"], #mobile-menu a[href^="#"]');
-
-        // Clicking a nav anchor should mark it active (and close mobile menu if open)
-        navAnchors.forEach(link => {
-            link.addEventListener('click', function() {
-                navAnchors.forEach(l => l.classList.remove('text-cyan-400'));
-                this.classList.add('text-cyan-400');
-                // mobile menu auto-hide handled elsewhere (anchor click already hides it)
-            });
-        });
-
-        // Scroll-spy: observe sections and update active nav link on scroll/swipe
-        const sections = document.querySelectorAll('section[id]');
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    // Find matching anchor(s) and update classes
-                    navAnchors.forEach(a => {
-                        const href = a.getAttribute('href');
-                        if (href === `#${id}`) {
-                            a.classList.add('text-cyan-400');
-                        } else {
-                            a.classList.remove('text-cyan-400');
-                        }
-                    });
-                }
-            });
-        }, {
-            // Consider a section active when its middle is visible
-            threshold: 0.45
-        });
-
-        sections.forEach(s => sectionObserver.observe(s));
     </script>
 </body>
 </html>
