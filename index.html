@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         ::-webkit-scrollbar {
@@ -42,12 +45,25 @@
         }
 
         @keyframes gradientBg {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
             letter-spacing: -0.5px;
@@ -62,9 +78,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .text-gradient {
@@ -77,8 +101,15 @@
         }
 
         @keyframes gradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         .fade-in-up {
@@ -132,13 +163,29 @@
         }
 
         @keyframes blink {
-            0%, 49%, 100% { opacity: 1; }
-            50%, 99% { opacity: 0; }
+
+            0%,
+            49%,
+            100% {
+                opacity: 1;
+            }
+
+            50%,
+            99% {
+                opacity: 0;
+            }
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(15px);
+            }
         }
 
         .scroll-indicator {
@@ -146,24 +193,51 @@
         }
 
         @keyframes float-bounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
 
         @keyframes shimmer {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
         }
 
         @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+            }
         }
 
         @keyframes pulse-ring {
-            0% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 212, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 212, 255, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+            }
         }
 
         .progress-bar {
@@ -341,10 +415,25 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translate(var(--tx), -100vh) rotate(360deg); opacity: 0; }
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translate(var(--tx), -100vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .particle {
@@ -493,71 +582,97 @@
 
         .mobile-menu {
             position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(10, 10, 10, 0.98);
+            inset: 0;
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
-            z-index: 40;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
         }
 
         .mobile-menu.open {
-            max-height: 400px;
-            background: rgba(0, 212, 255, 0.08);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
 
         .mobile-menu a {
-            display: block;
-            padding: 15px 24px;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e5e5e5;
             transition: all 0.3s ease;
             position: relative;
-        }
-
-        .mobile-menu a::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: linear-gradient(180deg, #00d4ff, #a855f7);
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu a:hover::before {
-            transform: scaleY(1);
+            text-decoration: none;
         }
 
         .mobile-menu a:hover {
-            background: rgba(0, 212, 255, 0.05);
-            padding-left: 32px;
+            color: #00d4ff;
+            transform: scale(1.1);
         }
 
         @keyframes mesh-gradient {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 50%; }
-            50% { background-position: 100% 0%; }
-            75% { background-position: 0% 0%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 0%;
+            }
+
+            75% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @keyframes orb-float {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
-            25% { transform: translate(50px, -80px) scale(1.2); opacity: 0.3; }
-            50% { transform: translate(100px, 0) scale(0.8); opacity: 0.5; }
-            75% { transform: translate(-30px, 100px) scale(1.1); opacity: 0.3; }
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+
+            25% {
+                transform: translate(50px, -80px) scale(1.2);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translate(100px, 0) scale(0.8);
+                opacity: 0.5;
+            }
+
+            75% {
+                transform: translate(-30px, 100px) scale(1.1);
+                opacity: 0.3;
+            }
         }
 
         @keyframes glow-pulse {
-            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6)); }
-            50% { filter: drop-shadow(0 0 60px rgba(0, 212, 255, 1)); }
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 60px rgba(0, 212, 255, 1));
+            }
         }
 
         #home::before {
@@ -565,8 +680,8 @@
             position: absolute;
             inset: 0;
             background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
             animation: mesh-gradient 15s ease infinite;
             pointer-events: none;
         }
@@ -616,7 +731,7 @@
             overflow: visible;
         }
 
-        .hidden-projects > div {
+        .hidden-projects>div {
             padding-top: 24px;
         }
 
@@ -639,17 +754,20 @@
         }
     </style>
 </head>
+
 <body>
-    <nav id="navbar" class="fixed top-0 w-full z-50 py-4 transition-all duration-300">
-        <div class="container mx-auto px-6 flex items-center justify-between">
+    <nav id="navbar" class="fixed top-0 w-full z-[2001] py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex items-center justify-between relative z-50">
             <a href="#home" class="text-3xl font-bold text-gradient">Rami<span class="text-cyan-400">.</span></a>
 
             <div class="hidden md:flex space-x-1">
                 <a href="#home" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Home</a>
                 <a href="#about" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">About</a>
                 <a href="#skills" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Skills</a>
-                <a href="#projects" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Projects</a>
-                <a href="#experience" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#projects"
+                    class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience"
+                    class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Experience</a>
                 <a href="#contact" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Contact</a>
             </div>
 
@@ -662,14 +780,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="mobile-menu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
-        </div>
+
     </nav>
 
     <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
@@ -678,7 +789,8 @@
         <div class="container mx-auto px-6 text-center z-10">
             <div class="fade-in-up">
                 <div class="mb-6">
-                    <p class="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4">Welcome to my portfolio</p>
+                    <p class="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4">Welcome to my
+                        portfolio</p>
                 </div>
 
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -692,10 +804,12 @@
                 <p id="typing-text" class="text-lg md:text-xl mb-12 h-20 typing-cursor text-cyan-400"></p>
 
                 <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
-                    <a href="#projects" class="btn-primary px-8 py-4 rounded-lg font-semibold text-white relative z-10 inline-block">
+                    <a href="#projects"
+                        class="btn-primary px-8 py-4 rounded-lg font-semibold text-white relative z-10 inline-block">
                         View My Work
                     </a>
-                    <a href="public/70__ats_rating_resume_template_(15).pdf" download class="btn-secondary px-8 py-4 rounded-lg font-semibold inline-block">
+                    <a href="public/70__ats_rating_resume_template_(15).pdf" download
+                        class="btn-secondary px-8 py-4 rounded-lg font-semibold inline-block">
                         Download CV
                     </a>
                 </div>
@@ -728,12 +842,16 @@
             </h2>
 
             <div class="max-w-4xl mx-auto mb-20 fade-in-up">
-                <div class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 border border-cyan-400/20 rounded-lg p-8 md:p-12 backdrop-blur-xl">
+                <div
+                    class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 border border-cyan-400/20 rounded-lg p-8 md:p-12 backdrop-blur-xl">
                     <p class="text-lg leading-relaxed mb-6 text-gray-200">
-                        Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs, microservices architectures, and deploying applications with CI/CD automation.
+                        Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in
+                        containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs,
+                        microservices architectures, and deploying applications with CI/CD automation.
                     </p>
                     <p class="text-lg leading-relaxed text-gray-200">
-                        Proficient in database design, caching strategies, and cloud-native deployment patterns. Passionate about building scalable systems and automating infrastructure to drive innovation.
+                        Proficient in database design, caching strategies, and cloud-native deployment patterns.
+                        Passionate about building scalable systems and automating infrastructure to drive innovation.
                     </p>
                 </div>
             </div>
@@ -911,7 +1029,8 @@
                 <div class="project-card p-8 rounded-xl fade-in-up">
                     <div class="flex items-start justify-between mb-6">
                         <i class="fas fa-cloud text-5xl text-cyan-400 project-icon"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-cyan-400 transition-colors">
+                        <a href="https://github.com/ramiadell" target="_blank"
+                            class="text-2xl hover:text-cyan-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -920,18 +1039,25 @@
                         Production-grade multi-AZ platform with GitOps workflow, reducing release time by 85%
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">AWS EKS</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Terraform</span>
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">ArgoCD</span>
-                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Jenkins</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">AWS
+                            EKS</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Terraform</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span
+                            class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Jenkins</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
                     </div>
                 </div>
 
                 <div class="project-card p-8 rounded-xl fade-in-up">
                     <div class="flex items-start justify-between mb-6">
                         <i class="fas fa-university text-5xl text-green-400 project-icon"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-green-400 transition-colors">
+                        <a href="https://github.com/ramiadell" target="_blank"
+                            class="text-2xl hover:text-green-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -940,39 +1066,53 @@
                         Secure banking API with JWT auth, 2FA, KYC verification, and 8+ orchestrated microservices
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">DRF</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Celery</span>
-                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Redis</span>
-                        <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">DRF</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Celery</span>
+                        <span
+                            class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Redis</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">Docker</span>
                     </div>
                 </div>
 
                 <div class="project-card p-8 rounded-xl fade-in-up">
                     <div class="flex items-start justify-between mb-6">
                         <i class="fas fa-video text-5xl text-purple-400 project-icon"></i>
-                        <a href="http://nexmediaai.com" target="_blank" class="text-2xl hover:text-purple-400 transition-colors">
+                        <a href="http://nexmediaai.com" target="_blank"
+                            class="text-2xl hover:text-purple-400 transition-colors">
                             <i class="fas fa-external-link-alt"></i>
                         </a>
                     </div>
                     <h3 class="text-2xl font-bold mb-3">NexMediaAI.com</h3>
                     <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                        AI SaaS platform for subscription-based video captioning and translation with payment integration
+                        AI SaaS platform for subscription-based video captioning and translation with payment
+                        integration
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
-                        <span class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-xs font-semibold">Flask</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Microservices</span>
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Docker</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">CI/CD</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span
+                            class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-xs font-semibold">Flask</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Microservices</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">CI/CD</span>
                     </div>
                 </div>
 
                 <div class="project-card p-8 rounded-xl fade-in-up">
                     <div class="flex items-start justify-between mb-6">
                         <i class="fas fa-rocket text-5xl text-orange-400 project-icon"></i>
-                        <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-orange-400 transition-colors">
+                        <a href="https://github.com/ramiadell" target="_blank"
+                            class="text-2xl hover:text-orange-400 transition-colors">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -981,11 +1121,16 @@
                         Production-ready GitOps deployment with self-healing rollbacks and multi-environment support
                     </p>
                     <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
-                        <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">ArgoCD</span>
-                        <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">GitOps</span>
-                        <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
-                        <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">NGINX</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
+                        <span
+                            class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">GitOps</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">NGINX</span>
                     </div>
                 </div>
             </div>
@@ -1001,42 +1146,60 @@
                     <div class="project-card p-8 rounded-xl fade-in-up">
                         <div class="flex items-start justify-between mb-6">
                             <i class="fas fa-shopping-cart text-5xl text-indigo-400 project-icon"></i>
-                            <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-indigo-400 transition-colors">
+                            <a href="https://github.com/ramiadell" target="_blank"
+                                class="text-2xl hover:text-indigo-400 transition-colors">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
                         <h3 class="text-2xl font-bold mb-3">Multi-Vendor E-Commerce</h3>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            Full-stack marketplace platform with vendor management, product listings, orders, and payment processing. Real-time notifications and admin dashboard for analytics.
+                            Full-stack marketplace platform with vendor management, product listings, orders, and
+                            payment processing. Real-time notifications and admin dashboard for analytics.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
-                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">React</span>
-                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
-                            <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Stripe</span>
-                            <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">WebSocket</span>
-                            <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Docker</span>
+                            <span
+                                class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                            <span
+                                class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">React</span>
+                            <span
+                                class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                            <span
+                                class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Stripe</span>
+                            <span
+                                class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">WebSocket</span>
+                            <span
+                                class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Docker</span>
                         </div>
                     </div>
 
                     <div class="project-card p-8 rounded-xl fade-in-up">
                         <div class="flex items-start justify-between mb-6">
                             <i class="fas fa-tv text-5xl text-pink-400 project-icon"></i>
-                            <a href="https://github.com/ramiadell" target="_blank" class="text-2xl hover:text-pink-400 transition-colors">
+                            <a href="https://github.com/ramiadell" target="_blank"
+                                class="text-2xl hover:text-pink-400 transition-colors">
                                 <i class="fab fa-github"></i>
                             </a>
                         </div>
                         <h3 class="text-2xl font-bold mb-3">Streaming Channel API</h3>
                         <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            High-performance FastAPI backend for video streaming platform with content management, user subscriptions, adaptive bitrate streaming, and real-time analytics.
+                            High-performance FastAPI backend for video streaming platform with content management, user
+                            subscriptions, adaptive bitrate streaming, and real-time analytics.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-teal-400 bg-opacity-20 text-teal-400 rounded-full text-xs font-semibold">FastAPI</span>
-                            <span class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">PostgreSQL</span>
-                            <span class="px-3 py-1 bg-orange-500 bg-opacity-20 text-orange-500 rounded-full text-xs font-semibold">Redis Cache</span>
-                            <span class="px-3 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 rounded-full text-xs font-semibold">FFmpeg</span>
-                            <span class="px-3 py-1 bg-red-500 bg-opacity-20 text-red-500 rounded-full text-xs font-semibold">Celery</span>
-                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">S3 Storage</span>
+                            <span
+                                class="px-3 py-1 bg-teal-400 bg-opacity-20 text-teal-400 rounded-full text-xs font-semibold">FastAPI</span>
+                            <span
+                                class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">PostgreSQL</span>
+                            <span
+                                class="px-3 py-1 bg-orange-500 bg-opacity-20 text-orange-500 rounded-full text-xs font-semibold">Redis
+                                Cache</span>
+                            <span
+                                class="px-3 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 rounded-full text-xs font-semibold">FFmpeg</span>
+                            <span
+                                class="px-3 py-1 bg-red-500 bg-opacity-20 text-red-500 rounded-full text-xs font-semibold">Celery</span>
+                            <span
+                                class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">S3
+                                Storage</span>
                         </div>
                     </div>
                 </div>
@@ -1052,7 +1215,8 @@
 
             <div class="max-w-4xl mx-auto">
                 <div class="timeline-item mb-16 fade-in-left">
-                    <div class="bg-gradient-to-r from-cyan-400/10 to-cyan-400/5 backdrop-blur-xl p-8 rounded-lg border border-cyan-400/20">
+                    <div
+                        class="bg-gradient-to-r from-cyan-400/10 to-cyan-400/5 backdrop-blur-xl p-8 rounded-lg border border-cyan-400/20">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <h3 class="text-2xl font-bold text-cyan-400">Python Backend Developer</h3>
                             <span class="text-gray-400 text-sm">Jan 2025 - Present</span>
@@ -1061,43 +1225,52 @@
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Delivered 4+ production-grade backend projects including REST APIs, microservices, and AI-powered platforms</span>
+                                <span>Delivered 4+ production-grade backend projects including REST APIs, microservices,
+                                    and AI-powered platforms</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Developed scalable systems using Django/Flask with PostgreSQL, Redis caching, and Celery for async tasks</span>
+                                <span>Developed scalable systems using Django/Flask with PostgreSQL, Redis caching, and
+                                    Celery for async tasks</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Containerized and deployed applications using Docker with multi-stage builds and Docker Compose</span>
+                                <span>Containerized and deployed applications using Docker with multi-stage builds and
+                                    Docker Compose</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Integrated secure payment gateways (PayPal, Paymob, Stripe) and optimized database performance</span>
+                                <span>Integrated secure payment gateways (PayPal, Paymob, Stripe) and optimized database
+                                    performance</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="timeline-item fade-in-right">
-                    <div class="bg-gradient-to-r from-purple-400/10 to-purple-400/5 backdrop-blur-xl p-8 rounded-lg border border-purple-400/20">
+                    <div
+                        class="bg-gradient-to-r from-purple-400/10 to-purple-400/5 backdrop-blur-xl p-8 rounded-lg border border-purple-400/20">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <h3 class="text-2xl font-bold text-purple-400">Python & DevOps Intern</h3>
                             <span class="text-gray-400 text-sm">Jul 2025 - Nov 2025</span>
                         </div>
-                        <p class="text-lg text-cyan-400 mb-6 font-semibold">Information Technology Institute (ITI) | 5-month Intensive Full-Time Program</p>
+                        <p class="text-lg text-cyan-400 mb-6 font-semibold">Information Technology Institute (ITI) |
+                            5-month Intensive Full-Time Program</p>
                         <ul class="space-y-3 text-gray-300">
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Hands-on training in cloud-native development, infrastructure automation, and container orchestration</span>
+                                <span>Hands-on training in cloud-native development, infrastructure automation, and
+                                    container orchestration</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Built and deployed applications on AWS EKS with automated CI/CD pipelines and infrastructure as code</span>
+                                <span>Built and deployed applications on AWS EKS with automated CI/CD pipelines and
+                                    infrastructure as code</span>
                             </li>
                             <li class="flex items-start gap-3">
                                 <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
-                                <span>Core Technologies: Linux, Docker, Kubernetes (EKS), Jenkins CI/CD, Terraform (IaC), Ansible, Helm, AWS, Prometheus, NGINX, GitOps (ArgoCD)</span>
+                                <span>Core Technologies: Linux, Docker, Kubernetes (EKS), Jenkins CI/CD, Terraform
+                                    (IaC), Ansible, Helm, AWS, Prometheus, NGINX, GitOps (ArgoCD)</span>
                             </li>
                         </ul>
                     </div>
@@ -1124,7 +1297,9 @@
                     </div>
                     <div class="mt-6 p-6 bg-black bg-opacity-40 rounded-lg border-l-4 border-cyan-400">
                         <p class="text-sm text-gray-300">
-                            <strong class="text-cyan-400 block mb-2">Graduation Project:</strong> Tripey Travel Planner (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask microservices backend
+                            <strong class="text-cyan-400 block mb-2">Graduation Project:</strong> Tripey Travel Planner
+                            (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask
+                            microservices backend
                         </p>
                     </div>
                 </div>
@@ -1160,23 +1335,29 @@
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 fade-in-up">
                 Let's Build Something <span class="text-gradient">Amazing</span>
             </h2>
-            <p class="text-center text-gray-400 mb-20 fade-in-up text-lg">Have a project in mind? Let's connect and create something extraordinary together!</p>
+            <p class="text-center text-gray-400 mb-20 fade-in-up text-lg">Have a project in mind? Let's connect and
+                create something extraordinary together!</p>
 
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="fade-in-left">
                     <h3 class="text-2xl font-bold mb-10">Get In Touch</h3>
                     <div class="space-y-6">
-                        <a href="mailto:rami.adel.shawky@gmail.com" class="flex items-center gap-4 p-4 rounded-lg hover:bg-cyan-400/10 transition-all group">
-                            <div class="w-14 h-14 bg-cyan-400/20 rounded-full flex items-center justify-center group-hover:bg-cyan-400/30 transition-all">
+                        <a href="mailto:rami.adel.shawky@gmail.com"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-cyan-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-cyan-400/20 rounded-full flex items-center justify-center group-hover:bg-cyan-400/30 transition-all">
                                 <i class="fas fa-envelope text-cyan-400 text-xl"></i>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-400">Email</p>
-                                <p class="font-semibold group-hover:text-cyan-400 transition-colors">rami.adel.shawky@gmail.com</p>
+                                <p class="font-semibold group-hover:text-cyan-400 transition-colors">
+                                    rami.adel.shawky@gmail.com</p>
                             </div>
                         </a>
-                        <a href="tel:+201553963637" class="flex items-center gap-4 p-4 rounded-lg hover:bg-green-400/10 transition-all group">
-                            <div class="w-14 h-14 bg-green-400/20 rounded-full flex items-center justify-center group-hover:bg-green-400/30 transition-all">
+                        <a href="tel:+201553963637"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-green-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-green-400/20 rounded-full flex items-center justify-center group-hover:bg-green-400/30 transition-all">
                                 <i class="fas fa-phone text-green-400 text-xl"></i>
                             </div>
                             <div>
@@ -1184,8 +1365,10 @@
                                 <p class="font-semibold group-hover:text-green-400 transition-colors">+20 1553963637</p>
                             </div>
                         </a>
-                        <a href="https://linkedin.com/in/ramiadell" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-purple-400/10 transition-all group">
-                            <div class="w-14 h-14 bg-purple-400/20 rounded-full flex items-center justify-center group-hover:bg-purple-400/30 transition-all">
+                        <a href="https://linkedin.com/in/ramiadell" target="_blank"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-purple-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-purple-400/20 rounded-full flex items-center justify-center group-hover:bg-purple-400/30 transition-all">
                                 <i class="fab fa-linkedin text-purple-400 text-xl"></i>
                             </div>
                             <div>
@@ -1193,8 +1376,10 @@
                                 <p class="font-semibold group-hover:text-purple-400 transition-colors">ramiadell</p>
                             </div>
                         </a>
-                        <a href="https://github.com/ramiadell" target="_blank" class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-400/10 transition-all group">
-                            <div class="w-14 h-14 bg-gray-400/20 rounded-full flex items-center justify-center group-hover:bg-gray-400/30 transition-all">
+                        <a href="https://github.com/ramiadell" target="_blank"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-gray-400/20 rounded-full flex items-center justify-center group-hover:bg-gray-400/30 transition-all">
                                 <i class="fab fa-github text-gray-400 text-xl"></i>
                             </div>
                             <div>
@@ -1217,9 +1402,11 @@
                         </div>
                         <div>
                             <label class="block text-sm font-semibold mb-2 text-gray-300">Message</label>
-                            <textarea rows="5" placeholder="Your Message" required class="w-full px-5 py-3 rounded-lg resize-none"></textarea>
+                            <textarea rows="5" placeholder="Your Message" required
+                                class="w-full px-5 py-3 rounded-lg resize-none"></textarea>
                         </div>
-                        <button type="submit" class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-white relative">
+                        <button type="submit"
+                            class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-white relative">
                             Send Message <i class="fas fa-paper-plane ml-2"></i>
                         </button>
                     </form>
@@ -1233,14 +1420,16 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <div>
                     <h3 class="text-lg font-bold text-gradient mb-4">R.A.S</h3>
-                    <p class="text-gray-400 text-sm">Backend Engineer & DevOps Specialist crafting scalable solutions</p>
+                    <p class="text-gray-400 text-sm">Backend Engineer & DevOps Specialist crafting scalable solutions
+                    </p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-cyan-400 mb-4">Quick Links</h4>
                     <div class="space-y-2 text-sm">
                         <a href="#home" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a>
                         <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors block">About</a>
-                        <a href="#projects" class="text-gray-400 hover:text-cyan-400 transition-colors block">Projects</a>
+                        <a href="#projects"
+                            class="text-gray-400 hover:text-cyan-400 transition-colors block">Projects</a>
                     </div>
                 </div>
                 <div>
@@ -1264,6 +1453,15 @@
             </div>
         </div>
     </footer>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
 
     <div class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up text-white"></i>
@@ -1401,7 +1599,7 @@
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
                 if (href === '#') return;
 
@@ -1417,6 +1615,7 @@
                     if (mobileMenu.classList.contains('open')) {
                         mobileMenu.classList.remove('open');
                         document.getElementById('mobile-menu-btn').querySelector('.mobile-nav-toggle').classList.remove('active');
+                        document.body.style.overflow = '';
                     }
                 }
             });
@@ -1427,8 +1626,9 @@
 
         mobileMenuBtn.addEventListener('click', () => {
             const toggle = mobileMenuBtn.querySelector('.mobile-nav-toggle');
-            mobileMenu.classList.toggle('open');
+            const isOpen = mobileMenu.classList.toggle('open');
             toggle.classList.toggle('active');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         const contactForm = document.querySelector('.contact-form');
@@ -1453,4 +1653,5 @@
         });
     </script>
 </body>
+
 </html>
