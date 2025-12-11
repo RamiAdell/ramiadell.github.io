@@ -1215,9 +1215,25 @@
                     </button>
                 </div>
             </div>
-    </section>
+        </section>
 
-    <section id="experience" class="py-28 gradient-bg relative">
+        <style>
+        @media (max-width: 767px) {
+            /* Experience: slightly smaller text for mobile */
+            #experience .timeline-item h3 { font-size: 1.125rem; line-height: 1.2; }
+            #experience .timeline-item p { font-size: 0.95rem; }
+            #experience .timeline-item .space-y-3 { font-size: 0.875rem; }
+
+            /* Prevent the absolute logo from overlapping the header on mobile */
+            #experience .timeline-item .bg-gradient-to-r > .flex { padding-right: 35px; }
+
+            /* About: apply same mobile text reduction */
+            #about h2 { font-size: 1.75rem; line-height: 1.15; }
+            #about .bg-gradient-to-r p { font-size: 0.95rem; line-height: 1.4; }
+        }
+        </style>
+
+        <section id="experience" class="py-28 gradient-bg relative">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 <span class="text-gradient">Experience</span>
