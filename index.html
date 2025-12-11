@@ -722,16 +722,18 @@
 
         .hidden-projects {
             max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            overflow: visible;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hidden-projects.show {
             max-height: 2000px;
+            opacity: 1;
             overflow: visible;
         }
 
-        .hidden-projects>div {
+        .hidden-projects > div {
             padding-top: 24px;
         }
 
@@ -1019,7 +1021,7 @@
         </div>
     </section>
 
-    <section id="projects" class="pt-28 bg-black relative">
+    <section id="projects" class="py-28 bg-black relative">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
                 Featured <span class="text-gradient">Projects</span>
@@ -1135,14 +1137,11 @@
                 </div>
             </div>
 
-            <div class="w-full flex justify-center my-16 fade-in-up">
-                <button id="expand-projects-btn" class="project-expand-btn" title="Show more projects">
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
 
-            <div id="hidden-projects" class="hidden-projects">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+            <div class="mt-8 text-center">
+                <div id="hidden-projects"
+                    class="hidden-projects grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto text-left">
                     <div class="project-card p-8 rounded-xl fade-in-up">
                         <div class="flex items-start justify-between mb-6">
                             <i class="fas fa-shopping-cart text-5xl text-indigo-400 project-icon"></i>
@@ -1203,8 +1202,14 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mt-12 flex justify-center w-full">
+                    <button id="expand-projects-btn" class="project-expand-btn text-cyan-400 hover:text-white"
+                        title="Show more projects">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
             </div>
-        </div>
     </section>
 
     <section id="experience" class="py-28 gradient-bg relative">
@@ -1471,12 +1476,12 @@
     </div>
 
     <script>
-            const typingTexts = [
-                "Building Scalable Systems",
-                "Cloud-Native Architecture",
-                "Python Backend Development",
-                "DevOps & CI/CD Enthusiast"
-            ];
+        const typingTexts = [
+            "Building Scalable Systems",
+            "Cloud-Native Architecture",
+            "Python Backend Development",
+            "DevOps & CI/CD Enthusiast"
+        ];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -1671,21 +1676,23 @@
             });
         }
 
+
+
         const expandBtn = document.getElementById('expand-projects-btn');
         const hiddenProjects = document.getElementById('hidden-projects');
-        const projectsSection = document.getElementById('projects');
 
         expandBtn.addEventListener('click', () => {
+            const isHidden = !hiddenProjects.classList.contains('show');
             hiddenProjects.classList.toggle('show');
-            expandBtn.classList.toggle('open');
-            if (hiddenProjects.classList.contains('show')) {
-                expandBtn.title = 'Hide more projects';
-                projectsSection.classList.add('pb-28');
-                window.scrollBy({ top: 200, behavior: 'smooth' });
+
+            if (isHidden) {
+                hiddenProjects.style.maxHeight = hiddenProjects.scrollHeight + "px";
             } else {
-                expandBtn.title = 'Show more projects';
-                projectsSection.classList.remove('pb-28');
+                hiddenProjects.style.maxHeight = null;
             }
+
+            expandBtn.classList.toggle('open');
+            expandBtn.title = isHidden ? 'Hide more projects' : 'Show more projects';
         });
     </script>
 </body>
