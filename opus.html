@@ -6,21 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rami Adel Shawky - Backend Engineer & Cloud Developer</title>
   
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/logo.png">
-    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
-    <link rel="apple-touch-icon" href="assets/logo.png">
-  
-    <meta name="theme-color" content="#000000">
-    <meta name="color-scheme" content="dark">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <style>
@@ -79,25 +74,41 @@
         }
 
         .gradient-bg {
-            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #0a0a0a 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
+            background: #050508;
             position: relative;
             overflow: hidden;
         }
 
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
+        /* Aurora Canvas Background */
+        #aurora-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
 
-            50% {
-                background-position: 100% 50%;
-            }
+        /* Mesh Gradient Overlay */
+        .mesh-overlay {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse 50% 30% at 50% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
 
-            100% {
-                background-position: 0% 50%;
-            }
+        /* Noise texture overlay for depth */
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 2;
         }
 
         .text-gradient {
@@ -427,35 +438,113 @@
             box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5);
         }
 
-        @keyframes float {
+        /* Floating Code Snippets */
+        .floating-code {
+            position: absolute;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 11px;
+            color: rgba(0, 212, 255, 0.15);
+            white-space: pre;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatCode 25s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
 
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0;
+        .floating-code:nth-child(odd) {
+            color: rgba(168, 85, 247, 0.12);
+            animation-duration: 30s;
+            animation-direction: reverse;
+        }
+
+        .floating-code:nth-child(3n) {
+            color: rgba(16, 185, 129, 0.1);
+            animation-duration: 35s;
+        }
+
+        @keyframes floatCode {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.15;
             }
-
-            10% {
-                opacity: 0.5;
+            25% {
+                transform: translateY(-30px) translateX(20px) rotate(1deg);
+                opacity: 0.2;
             }
-
-            90% {
-                opacity: 0.5;
+            50% {
+                transform: translateY(-10px) translateX(-15px) rotate(-1deg);
+                opacity: 0.1;
             }
-
-            100% {
-                transform: translate(var(--tx), -100vh) rotate(360deg);
-                opacity: 0;
+            75% {
+                transform: translateY(-40px) translateX(10px) rotate(0.5deg);
+                opacity: 0.18;
             }
         }
 
-        .particle {
+        /* Glowing orbs */
+        .glow-orb {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(0, 212, 255, 0.6);
             border-radius: 50%;
-            animation: float 20s infinite linear;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbPulse 8s ease-in-out infinite;
+        }
+
+        .glow-orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.4) 0%, transparent 70%);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .glow-orb-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
+            top: 50%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        .glow-orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: -5s;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.6;
+            }
+            33% {
+                transform: scale(1.2) translate(30px, -20px);
+                opacity: 0.8;
+            }
+            66% {
+                transform: scale(0.9) translate(-20px, 30px);
+                opacity: 0.5;
+            }
+        }
+
+        /* Grid lines effect */
+        .grid-lines {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 20%, transparent 70%);
         }
 
         .contact-form input,
@@ -688,16 +777,101 @@
             }
         }
 
-        #home::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-            animation: mesh-gradient 15s ease infinite;
-            pointer-events: none;
+        /* Hero content styling */
+        .hero-content {
+            position: relative;
+            z-index: 10;
         }
+
+        /* Animated border for hero badge */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.4); }
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.7; }
+        }
+
+        /* Hero name with glow */
+        .hero-name {
+            text-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+            animation: nameGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% { text-shadow: 0 0 60px rgba(0, 212, 255, 0.3); }
+            50% { text-shadow: 0 0 80px rgba(0, 212, 255, 0.5), 0 0 120px rgba(168, 85, 247, 0.3); }
+        }
+
+        /* Terminal-style code block */
+        .code-terminal {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 16px 24px;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 14px;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .code-terminal-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-terminal-dot.red { background: #ff5f56; }
+        .code-terminal-dot.yellow { background: #ffbd2e; }
+        .code-terminal-dot.green { background: #27ca40; }
+
+        .code-line {
+            display: block;
+            line-height: 1.6;
+        }
+
+        .code-keyword { color: #c792ea; }
+        .code-function { color: #82aaff; }
+        .code-string { color: #c3e88d; }
+        .code-comment { color: #546e7a; }
+        .code-variable { color: #f78c6c; }
+        .code-bracket { color: #89ddff; }
 
         .project-expand-btn {
             background: transparent;
@@ -766,11 +940,117 @@
             h2 {
                 font-size: 1.8rem;
             }
+
+            .floating-code {
+                display: none;
+            }
+
+            .glow-orb {
+                transform: scale(0.5);
+                filter: blur(40px);
+            }
+
+            .code-terminal {
+                display: none !important;
+            }
+
+            .hero-badge {
+                font-size: 10px;
+                padding: 6px 14px;
+            }
+        }
+
+        /* Smooth entrance animation for hero content */
+        @keyframes heroEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content > div {
+            animation: heroEntrance 1s ease-out forwards;
+        }
+
+        /* Hover glow effect for buttons */
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, #00d4ff, #a855f7, #10b981);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            filter: blur(15px);
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 0.6;
+        }
+
+        /* Glassmorphism enhancement */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animated underline for text */
+        .animated-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #a855f7);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Cursor glow effect */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (hover: hover) {
+            .cursor-glow {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
     <nav id="navbar" class="fixed top-0 w-full z-[2001] py-4 transition-all duration-300">
         <div class="container mx-auto px-6 flex items-center justify-between relative z-50">
             <a href="#home" class="text-3xl font-bold text-gradient">Rami<span class="text-cyan-400">.</span></a>
@@ -799,50 +1079,90 @@
     </nav>
 
     <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+        <!-- Aurora Canvas Background -->
+        <canvas id="aurora-canvas"></canvas>
+        
+        <!-- Glowing Orbs -->
+        <div class="glow-orb glow-orb-1"></div>
+        <div class="glow-orb glow-orb-2"></div>
+        <div class="glow-orb glow-orb-3"></div>
+        
+        <!-- Grid Lines -->
+        <div class="grid-lines"></div>
+        
+        <!-- Mesh Overlay -->
+        <div class="mesh-overlay"></div>
+        
+        <!-- Noise Texture -->
+        <div class="noise-overlay"></div>
+        
+        <!-- Floating Code Snippets -->
+        <div id="floating-code-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
-        <div class="container mx-auto px-6 text-center z-10">
-            <div class="fade-in-up">
-                <div class="mb-6">
-                    <p class="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4">Welcome to my
-                        portfolio</p>
+        <div class="container mx-auto px-6 text-center hero-content">
+            <div class="fade-in-up visible">
+                <div class="mb-8">
+                    <span class="hero-badge text-cyan-400">
+                        Available for opportunities
+                    </span>
                 </div>
 
-                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                    Rami Adel Shawky
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight hero-name">
+                    Rami Adel <span class="text-gradient">Shawky</span>
                 </h1>
 
-                <h2 class="text-2xl md:text-4xl text-gradient mb-8 font-semibold">
-                    Backend Engineer & Cloud Developer
+                <h2 class="text-xl md:text-3xl lg:text-4xl mb-6 font-medium text-gray-300">
+                    <span class="text-gradient">Backend Engineer</span> & <span class="text-gradient">Cloud Developer</span>
                 </h2>
 
-                <p id="typing-text" class="text-lg md:text-xl mb-12 h-20 typing-cursor text-cyan-400"></p>
+                <p id="typing-text" class="text-lg md:text-xl mb-10 h-16 typing-cursor text-cyan-400"></p>
 
-                <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
+                <!-- Code Terminal Snippet -->
+                <div class="code-terminal mb-10 hidden md:block">
+                    <div class="code-terminal-header">
+                        <span class="code-terminal-dot red"></span>
+                        <span class="code-terminal-dot yellow"></span>
+                        <span class="code-terminal-dot green"></span>
+                    </div>
+                    <code>
+                        <span class="code-line"><span class="code-keyword">class</span> <span class="code-function">Developer</span><span class="code-bracket">:</span></span>
+                        <span class="code-line">    <span class="code-keyword">def</span> <span class="code-function">__init__</span><span class="code-bracket">(</span><span class="code-variable">self</span><span class="code-bracket">)</span>:</span>
+                        <span class="code-line">        self.name = <span class="code-string">"Rami Adel"</span></span>
+                        <span class="code-line">        self.stack = <span class="code-bracket">[</span><span class="code-string">"Python"</span>, <span class="code-string">"Django"</span>, <span class="code-string">"K8s"</span><span class="code-bracket">]</span></span>
+                        <span class="code-line">        self.passion = <span class="code-string">"Building scalable systems"</span></span>
+                    </code>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-10">
                     <a href="#projects"
-                        class="btn-primary px-8 py-4 rounded-lg font-semibold text-white relative z-10 inline-block">
-                        View My Work
+                        class="btn-primary px-8 py-4 rounded-xl font-semibold text-white relative z-10 inline-flex items-center gap-2 group">
+                        <span>Explore My Work</span>
+                        <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                     <a href="assets/Rami%20Adel.pdf" download
-                        class="btn-secondary px-8 py-4 rounded-lg font-semibold inline-block">
-                        Download CV
+                        class="btn-secondary px-8 py-4 rounded-xl font-semibold inline-flex items-center gap-2">
+                        <i class="fas fa-download"></i>
+                        <span>Download CV</span>
                     </a>
                 </div>
 
-                <div class="flex gap-4 justify-center mb-16">
-                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin text-lg"></i>
+                <div class="flex gap-5 justify-center mb-12">
+                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon group" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin text-xl group-hover:scale-110 transition-transform"></i>
                     </a>
-                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon">
-                        <i class="fab fa-github text-lg"></i>
+                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon group" aria-label="GitHub">
+                        <i class="fab fa-github text-xl group-hover:scale-110 transition-transform"></i>
                     </a>
-                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon">
-                        <i class="fas fa-envelope text-lg"></i>
+                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon group" aria-label="Email">
+                        <i class="fas fa-envelope text-xl group-hover:scale-110 transition-transform"></i>
+                    </a>
+                    <a href="https://www.credly.com/users/ramiadell" target="_blank" class="social-icon group" aria-label="Credly">
+                        <i class="fas fa-award text-xl group-hover:scale-110 transition-transform"></i>
                     </a>
                 </div>
 
                 <div class="scroll-indicator">
-                    <a href="#about" class="text-cyan-400 text-3xl inline-block">
+                    <a href="#about" class="text-cyan-400 text-3xl inline-block hover:text-white transition-colors">
                         <i class="fas fa-chevron-down"></i>
                     </a>
                 </div>
@@ -1609,24 +1929,175 @@
 
         setTimeout(type, 500);
 
-        function createParticles() {
-            const container = document.getElementById('particles-container');
-            for (let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const tx = (Math.random() - 0.5) * 200;
-                const ty = Math.random() * 100;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.setProperty('--tx', tx + 'px');
-                particle.style.setProperty('--ty', ty + 'px');
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (15 + Math.random() * 15) + 's';
-                container.appendChild(particle);
+        // ============================================
+        // AURORA CANVAS ANIMATION - Instant Load
+        // ============================================
+        const canvas = document.getElementById('aurora-canvas');
+        const ctx = canvas.getContext('2d');
+        let animationId;
+        let time = 0;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Aurora color palette
+        const colors = [
+            { r: 0, g: 212, b: 255 },    // Cyan
+            { r: 168, g: 85, b: 247 },   // Purple
+            { r: 16, g: 185, b: 129 },   // Emerald
+            { r: 59, g: 130, b: 246 },   // Blue
+        ];
+
+        // Aurora wave parameters
+        class AuroraWave {
+            constructor(index, total) {
+                this.index = index;
+                this.total = total;
+                this.baseY = canvas.height * (0.3 + (index / total) * 0.4);
+                this.amplitude = 50 + Math.random() * 100;
+                this.frequency = 0.002 + Math.random() * 0.003;
+                this.phase = Math.random() * Math.PI * 2;
+                this.speed = 0.0005 + Math.random() * 0.001;
+                this.colorIndex = index % colors.length;
+                this.opacity = 0.08 + Math.random() * 0.12;
+                this.width = canvas.height * (0.3 + Math.random() * 0.4);
+            }
+
+            draw(time) {
+                const color = colors[this.colorIndex];
+                const gradient = ctx.createLinearGradient(0, this.baseY - this.width/2, 0, this.baseY + this.width/2);
+                gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`);
+                gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${this.opacity})`);
+                gradient.addColorStop(1, `rgba(${color.r}, ${color.g}, ${color.b}, 0)`);
+
+                ctx.beginPath();
+                ctx.moveTo(0, this.baseY);
+
+                for (let x = 0; x <= canvas.width; x += 5) {
+                    const y = this.baseY + 
+                        Math.sin(x * this.frequency + time * this.speed + this.phase) * this.amplitude +
+                        Math.sin(x * this.frequency * 2 + time * this.speed * 1.5) * (this.amplitude * 0.3);
+                    
+                    if (x === 0) {
+                        ctx.moveTo(x, y - this.width/2);
+                    }
+                    ctx.lineTo(x, y);
+                }
+
+                // Complete the shape
+                ctx.lineTo(canvas.width, canvas.height);
+                ctx.lineTo(0, canvas.height);
+                ctx.closePath();
+
+                ctx.fillStyle = gradient;
+                ctx.fill();
             }
         }
 
-        createParticles();
+        // Create aurora waves
+        let waves = [];
+        function initWaves() {
+            waves = [];
+            for (let i = 0; i < 5; i++) {
+                waves.push(new AuroraWave(i, 5));
+            }
+        }
+        initWaves();
+
+        // Animate aurora
+        function animateAurora() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw background gradient
+            const bgGradient = ctx.createRadialGradient(
+                canvas.width / 2, canvas.height / 2, 0,
+                canvas.width / 2, canvas.height / 2, canvas.width * 0.8
+            );
+            bgGradient.addColorStop(0, '#0a0a12');
+            bgGradient.addColorStop(1, '#050508');
+            ctx.fillStyle = bgGradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw waves
+            waves.forEach(wave => wave.draw(time));
+            
+            time += 16; // ~60fps timing
+            animationId = requestAnimationFrame(animateAurora);
+        }
+
+        animateAurora();
+
+        // Reinitialize on resize
+        window.addEventListener('resize', () => {
+            initWaves();
+        });
+
+        // ============================================
+        // FLOATING CODE SNIPPETS
+        // ============================================
+        const codeSnippets = [
+            `def deploy():
+    k8s.apply(manifest)
+    return "Success"`,
+            `class API:
+    @route("/")
+    def index(self):
+        return {"status": "ok"}`,
+            `docker build -t app .
+docker push registry/app`,
+            `terraform {
+  backend "s3" {}
+}`,
+            `apiVersion: v1
+kind: Deployment
+replicas: 3`,
+            `pipeline {
+  stages {
+    deploy()
+  }
+}`,
+            `async def fetch_data():
+    async with session:
+        return await resp`,
+            `SELECT * FROM users
+WHERE active = true
+ORDER BY created_at`,
+        ];
+
+        function createFloatingCode() {
+            const container = document.getElementById('floating-code-container');
+            if (!container) return;
+
+            const positions = [
+                { top: '5%', left: '2%' },
+                { top: '15%', right: '3%' },
+                { top: '35%', left: '5%' },
+                { top: '55%', right: '2%' },
+                { top: '70%', left: '3%' },
+                { top: '25%', right: '8%' },
+                { top: '80%', right: '5%' },
+                { top: '45%', left: '1%' },
+            ];
+
+            codeSnippets.forEach((code, i) => {
+                const el = document.createElement('pre');
+                el.className = 'floating-code';
+                el.textContent = code;
+                
+                const pos = positions[i % positions.length];
+                Object.assign(el.style, pos);
+                el.style.animationDelay = `${i * -3}s`;
+                
+                container.appendChild(el);
+            });
+        }
+
+        createFloatingCode();
 
         const observerOptions = {
             threshold: 0.1,
@@ -1791,6 +2262,53 @@
 
             expandBtn.classList.toggle('open');
             expandBtn.title = isHidden ? 'Hide more projects' : 'Show more projects';
+        });
+
+        // ============================================
+        // CURSOR GLOW EFFECT
+        // ============================================
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursorGlow() {
+            // Smooth follow effect
+            glowX += (mouseX - glowX) * 0.1;
+            glowY += (mouseY - glowY) * 0.1;
+            
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            
+            requestAnimationFrame(animateCursorGlow);
+        }
+
+        // Only enable cursor glow on non-touch devices
+        if (window.matchMedia('(hover: hover)').matches) {
+            animateCursorGlow();
+            
+            document.addEventListener('mouseenter', () => {
+                cursorGlow.style.opacity = '1';
+            });
+            
+            document.addEventListener('mouseleave', () => {
+                cursorGlow.style.opacity = '0';
+            });
+        }
+
+        // ============================================
+        // PERFORMANCE: Pause animations when not visible
+        // ============================================
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                cancelAnimationFrame(animationId);
+            } else {
+                animateAurora();
+            }
         });
     </script>
 </body>
