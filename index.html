@@ -1792,6 +1792,68 @@
             expandBtn.classList.toggle('open');
             expandBtn.title = isHidden ? 'Hide more projects' : 'Show more projects';
         });
+
+        const PORTFOLIO_VISIT_URL = 'https://api.ramiadel.cloud/api/portfolio/visit';
+        const PORTFOLIO_COUNT_URL = 'https://api.ramiadel.cloud/api/portfolio/count';
+
+        /**
+         * Track a portfolio visitor and display the updated count.
+         * Call this on page load — it increments the counter and updates the UI.
+         *
+         * Expected HTML:
+         *   <span id="portfolio-visitor-count-pill" style="display:none">
+         *     <span id="portfolio-visitor-count"></span> visitors
+         *   </span>
+         */
+        async function trackPortfolioVisitor() {
+        try {
+            const res = await fetch(PORTFOLIO_VISIT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+            const data = await res.json();
+            updatePortfolioCountUI(data.count);
+            }
+        } catch (e) {
+            console.warn('Portfolio counter API offline or unconfigured:', e.message);
+        }
+        }
+
+        /**
+         * Fetch the current portfolio visitor count without incrementing it.
+         * Useful for admin views or status pages.
+         */
+        async function getPortfolioCount() {
+        try {
+            const res = await fetch(PORTFOLIO_COUNT_URL, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+            const data = await res.json();
+            updatePortfolioCountUI(data.count);
+            return data.count;
+            }
+        } catch (e) {
+            console.warn('Portfolio count API offline or unconfigured:', e.message);
+        }
+        return null;
+        }
+
+        /** Internal helper — writes the count to the DOM if the pill elements exist. */
+        function updatePortfolioCountUI(count) {
+        const pill    = document.getElementById('portfolio-visitor-count-pill');
+        const countEl = document.getElementById('portfolio-visitor-count');
+        if (pill && countEl) {
+            countEl.textContent = count;
+            pill.style.display  = 'inline-block';
+        }
+        }
+
+        // Auto-run on page load
+        trackPortfolioVisitor();
+
     </script>
 </body>
 
