@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rami Adel Shawky | Backend Engineer & Cloud Developer</title>
+    <meta name="description" content="Portfolio of Rami Adel Shawky, a backend engineer building resilient APIs, cloud-ready systems, and deployment pipelines.">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --bg: #f5efe5;
+            --surface: rgba(255, 251, 245, 0.84);
+            --surface-strong: #fffaf2;
+            --surface-dark: #16212f;
+            --ink: #132032;
+            --ink-soft: #5f6774;
+            --line: rgba(19, 32, 50, 0.12);
+            --accent: #d8642b;
+            --accent-strong: #bb4f18;
+            --accent-soft: rgba(216, 100, 43, 0.12);
+            --teal: #117a72;
+            --gold: #d7a73a;
+            --shadow: 0 18px 60px rgba(18, 28, 44, 0.10);
+            --radius-lg: 32px;
+            --radius-md: 22px;
+            --max-width: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Sora", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top left, rgba(216, 100, 43, 0.10), transparent 30%),
+                radial-gradient(circle at 85% 15%, rgba(17, 122, 114, 0.12), transparent 28%),
+                linear-gradient(180deg, #f8f2e9 0%, #f3ebdf 42%, #f8f3eb 100%);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(19, 32, 50, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(19, 32, 50, 0.03) 1px, transparent 1px);
+            background-size: 36px 36px;
+            pointer-events: none;
+            opacity: 0.35;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 88%);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 2rem));
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 6.5rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+            align-items: end;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 3.7rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .section-header p {
+            max-width: 30rem;
+            color: var(--ink-soft);
+            line-height: 1.8;
+            justify-self: end;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(19, 32, 50, 0.1);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.55);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            backdrop-filter: blur(14px);
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 0.62rem;
+            height: 0.62rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            box-shadow: 0 0 0 6px rgba(216, 100, 43, 0.12);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            min-height: 3.4rem;
+            padding: 0 1.35rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-weight: 700;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            cursor: pointer;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .button-primary {
+            color: white;
+            background: linear-gradient(135deg, var(--accent), #e98d3f);
+            box-shadow: 0 14px 30px rgba(216, 100, 43, 0.22);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(19, 32, 50, 0.12);
+            color: var(--ink);
+        }
+
+        .button-ghost {
+            background: transparent;
+            border-color: rgba(19, 32, 50, 0.14);
+            color: var(--ink);
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            padding: 1rem 0;
+            backdrop-filter: blur(18px);
+            background: linear-gradient(180deg, rgba(245, 239, 229, 0.92), rgba(245, 239, 229, 0.68));
+            border-bottom: 1px solid rgba(19, 32, 50, 0.08);
+        }
+
+        .nav-shell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-mark {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 1rem;
+            background: linear-gradient(145deg, #fff4e8, #efddc5);
+            border: 1px solid rgba(19, 32, 50, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            display: grid;
+            place-items: center;
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        .brand-copy small {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 0.15rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.35rem;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(19, 32, 50, 0.08);
+            border-radius: 999px;
+        }
+
+        .nav-links a {
+            padding: 0.75rem 1rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--ink-soft);
+            transition: 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: white;
+            color: var(--ink);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid rgba(19, 32, 50, 0.1);
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--ink);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero {
+            padding: 4.5rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -8rem;
+            top: 5rem;
+            width: 26rem;
+            height: 26rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(17, 122, 114, 0.16), transparent 70%);
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 2.25rem;
+            align-items: center;
+        }
+
+        .hero-copy h1 {
+            font-size: clamp(3.1rem, 7vw, 6.7rem);
+            line-height: 0.94;
+            letter-spacing: -0.055em;
+            margin: 1.4rem 0 1.2rem;
+            max-width: 12ch;
+        }
+
+        .hero-copy h1 span {
+            display: block;
+            color: var(--accent);
+        }
+
+        .hero-copy .lede {
+            max-width: 44rem;
+            color: var(--ink-soft);
+            font-size: clamp(1rem, 1.3vw, 1.17rem);
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions,
+        .hero-meta,
+        .project-meta,
+        .cluster-list,
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero-actions {
+            gap: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            gap: 1.2rem 2rem;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ink-soft);
+            margin-bottom: 0.35rem;
+        }
+
+        .meta-item strong {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-panel,
+        .story-card,
+        .focus-card,
+        .project-card,
+        .timeline-card,
+        .cluster-card,
+        .education-card,
+        .contact-card,
+        .form-card,
+        .footer-card {
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(19, 32, 50, 0.08);
+            background: rgba(255, 255, 255, 0.65);
+            box-shadow: 0 10px 32px rgba(18, 28, 44, 0.06);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero-panel {
+            position: relative;
+            padding: 1.2rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(180deg, rgba(255, 250, 242, 0.92), rgba(255, 255, 255, 0.76));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-panel::before {
+            content: "";
+            position: absolute;
+            inset: 1rem;
+            border-radius: 24px;
+            border: 1px solid rgba(19, 32, 50, 0.08);
+            pointer-events: none;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.6rem 0.4rem 1.2rem;
+        }
+
+        .panel-dots {
+            display: flex;
+            gap: 0.45rem;
+        }
+
+        .panel-dots span {
+            width: 0.68rem;
+            height: 0.68rem;
+            border-radius: 50%;
+            background: #d3d7de;
+        }
+
+        .panel-dots span:first-child { background: #e48254; }
+        .panel-dots span:nth-child(2) { background: #e0be5b; }
+        .panel-dots span:last-child { background: #6aa87f; }
+
+        .panel-header p,
+        .availability-card small,
+        .code-card small,
+        .field label,
+        .contact-link span {
+            font-family: "IBM Plex Mono", monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.74rem;
+        }
+
+        .panel-header p { color: var(--ink-soft); }
+
+        .availability-card {
+            padding: 1.25rem;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(19, 32, 50, 0.96), rgba(25, 42, 63, 0.92));
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .availability-card small,
+        .code-card small {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0.8rem;
+        }
+
+        .availability-card h2 {
+            font-size: 1.7rem;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+        }
+
+        .availability-card p,
+        .focus-list span,
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.7;
+        }
+
+        .availability-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .availability-pills span {
+            padding: 0.55rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .code-card {
+            padding: 1.25rem;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(19, 32, 50, 0.08);
+        }
+
+        .code-card pre {
+            overflow-x: auto;
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.86rem;
+            line-height: 1.85;
+            color: var(--ink);
+        }
+
+        .code-accent { color: var(--accent); }
+        .code-teal { color: var(--teal); }
+
+        .hero-strip,
+        .work-grid,
+        .cluster-grid,
+        .education-grid,
+        .contact-layout,
+        .about-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .hero-strip { margin-top: 2.25rem; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.35rem; }
+        .cluster-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .education-grid { grid-template-columns: 1.15fr 0.85fr; }
+        .contact-layout { grid-template-columns: 0.95fr 1.05fr; }
+        .about-grid { grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; }
+
+        .stat-card {
+            padding: 1.25rem;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(19, 32, 50, 0.08);
+            box-shadow: 0 8px 24px rgba(18, 28, 44, 0.05);
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: clamp(1.6rem, 3vw, 2.5rem);
+            letter-spacing: -0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-card span,
+        .story-card p,
+        .project-card p,
+        .education-card p,
+        .education-card li,
+        .form-card p,
+        .footer-card p {
+            color: var(--ink-soft);
+            line-height: 1.8;
+        }
+
+        .story-card,
+        .focus-card,
+        .education-card,
+        .contact-card,
+        .form-card { padding: 1.8rem; }
+
+        .story-card .quote,
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            width: fit-content;
+            gap: 0.55rem;
+            padding: 0.38rem 0.72rem;
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+
+        .story-card .quote {
+            margin-bottom: 1rem;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+        }
+
+        .focus-card {
+            background: linear-gradient(180deg, rgba(19, 32, 50, 0.98), rgba(28, 44, 64, 0.92));
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .focus-card::after,
+        .contact-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -18% -14% auto;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(216, 100, 43, 0.22), transparent 66%);
+        }
+
+        .focus-card h3,
+        .form-card h3,
+        .education-card h3 {
+            font-size: 1.45rem;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.8rem;
+        }
+
+        .focus-list,
+        .timeline,
+        .contact-list,
+        .cert-grid {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .focus-list li,
+        .cert-item,
+        .contact-link {
+            list-style: none;
+            padding: 1rem 1.1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .focus-list strong,
+        .cert-item strong {
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .project-card {
+            padding: 1.55rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+
+        .project-top,
+        .timeline-role,
+        .cert-item,
+        .contact-link,
+        .footer-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .project-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 1rem;
+            display: grid;
+            place-items: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .project-icon.orange { background: linear-gradient(135deg, #e2773c, #cd4f16); }
+        .project-icon.teal { background: linear-gradient(135deg, #1c9b91, #0d6d67); }
+        .project-icon.gold { background: linear-gradient(135deg, #e5b44b, #ca8e18); }
+        .project-icon.ink { background: linear-gradient(135deg, #2d425c, #16212f); }
+
+        .project-top a,
+        .cert-item a,
+        .footer-links a {
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(19, 32, 50, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--ink);
+        }
+
+        .project-card h3,
+        .timeline-content h3 {
+            font-size: 1.35rem;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
+        }
+
+        .project-meta,
+        .cluster-list,
+        .footer-links {
+            gap: 0.55rem;
+        }
+
+        .project-meta span,
+        .cluster-list span {
+            padding: 0.48rem 0.72rem;
+            border-radius: 999px;
+            background: rgba(19, 32, 50, 0.06);
+            color: var(--ink-soft);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .project-badge.orange { background: rgba(216, 100, 43, 0.12); color: var(--accent-strong); }
+        .project-badge.teal { background: rgba(17, 122, 114, 0.12); color: var(--teal); }
+        .project-badge.gold { background: rgba(215, 167, 58, 0.14); color: #9a6b00; }
+        .project-badge.ink { background: rgba(19, 32, 50, 0.08); color: var(--ink); }
+
+        .timeline-card {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        .timeline-date {
+            padding-right: 1rem;
+            border-right: 1px solid rgba(19, 32, 50, 0.08);
+        }
+
+        .timeline-date strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-date span,
+        .timeline-role span,
+        .cert-item span {
+            color: var(--ink-soft);
+            line-height: 1.7;
+            font-size: 0.92rem;
+        }
+
+        .timeline-role {
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin: 0.55rem 0 1rem;
+        }
+
+        .timeline-role strong,
+        .education-card .school {
+            color: var(--accent-strong);
+            font-weight: 700;
+        }
+
+        .timeline-content ul,
+        .education-card ul {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .timeline-content li {
+            list-style: none;
+            color: var(--ink-soft);
+            line-height: 1.7;
+            padding-left: 1.3rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+        }
+
+        .cluster-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1rem;
+            font-size: 1.08rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cluster-card i {
+            color: var(--accent);
+        }
+
+        .contact-card {
+            background: linear-gradient(180deg, rgba(19, 32, 50, 0.98), rgba(29, 43, 61, 0.94));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card h3 {
+            font-size: 2rem;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            margin: 1rem 0 0.85rem;
+            max-width: 10ch;
+        }
+
+        .contact-link {
+            justify-content: flex-start;
+        }
+
+        .contact-link i {
+            width: 2.6rem;
+            height: 2.6rem;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f4d2a5;
+            flex-shrink: 0;
+        }
+
+        .contact-link span {
+            display: block;
+            color: rgba(255, 255, 255, 0.58);
+            margin-bottom: 0.15rem;
+        }
+
+        .form-card p {
+            margin-bottom: 1.4rem;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .field {
+            display: grid;
+            gap: 0.45rem;
+            margin-bottom: 1rem;
+        }
+
+        .field label {
+            color: var(--ink-soft);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 1px solid rgba(19, 32, 50, 0.12);
+            border-radius: 18px;
+            background: rgba(255, 251, 245, 0.84);
+            padding: 1rem 1rem 1rem 1.1rem;
+            color: var(--ink);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .field input:focus,
+        .field textarea:focus {
+            outline: none;
+            border-color: rgba(216, 100, 43, 0.45);
+            box-shadow: 0 0 0 4px rgba(216, 100, 43, 0.12);
+        }
+
+        .field textarea {
+            min-height: 190px;
+            resize: vertical;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            min-height: 1.4rem;
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        .site-footer {
+            padding: 0 0 2rem;
+        }
+
+        .footer-card {
+            padding: 1.4rem 1.6rem;
+        }
+
+        @media (max-width: 1080px) {
+            .hero-grid,
+            .section-header,
+            .about-grid,
+            .education-grid,
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header p {
+                justify-self: start;
+            }
+
+            .cluster-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero-strip,
+            .work-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 820px) {
+            .site-header {
+                padding: 0.8rem 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                inset: 5.25rem 1rem auto;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.3rem;
+                padding: 0.7rem;
+                border-radius: 24px;
+                background: rgba(255, 250, 243, 0.96);
+                box-shadow: var(--shadow);
+                transform: translateY(-1rem);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s ease, transform 0.25s ease;
+            }
+
+            .nav-links.is-open {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-actions .button-secondary {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: inline-grid;
+                place-items: center;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .section { padding: 5rem 0; }
+            .hero { padding-top: 3rem; }
+            .hero-copy h1 { max-width: 8ch; }
+            .hero-strip,
+            .work-grid,
+            .cluster-grid,
+            .field-grid { grid-template-columns: 1fr; }
+
+            .timeline-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-date {
+                border-right: 0;
+                padding-right: 0;
+                padding-bottom: 0.85rem;
+                border-bottom: 1px solid rgba(19, 32, 50, 0.08);
+            }
+
+            .footer-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .brand-copy {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="#home" aria-label="Go to home">
+                <span class="brand-mark">RA</span>
+                <span class="brand-copy">
+                    <small>Portfolio</small>
+                    Rami Adel Shawky
+                </span>
+            </a>
+
+            <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a class="button button-secondary" href="assets/Rami%20Adel.pdf" download>
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    Resume
+                </a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-copy reveal">
+                        <span class="eyebrow">Backend Engineering with Cloud Taste</span>
+                        <h1>Building calm, scalable <span>systems behind bold products.</span></h1>
+                        <p class="lede">
+                            I’m Rami Adel Shawky, a backend engineer focused on Python, APIs, cloud infrastructure,
+                            and delivery pipelines. I design services that stay readable for teams and resilient in
+                            production, from fintech workflows to Kubernetes-based platforms.
+                        </p>
+
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="#projects">
+                                <i class="fa-solid fa-arrow-trend-up"></i>
+                                See Selected Work
+                            </a>
+                            <a class="button button-ghost" href="#contact">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Start a Conversation
+                            </a>
+                        </div>
+
+                        <div class="hero-meta">
+                            <div class="meta-item">
+                                <span>Now Building</span>
+                                <strong>Multi-tenant SaaS backends</strong>
+                            </div>
+                            <div class="meta-item">
+                                <span>Base</span>
+                                <strong>Egypt</strong>
+                            </div>
+                            <div class="meta-item">
+                                <span>Specialties</span>
+                                <strong>Django, DRF, DevOps, Kubernetes</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="hero-panel reveal">
+                        <div class="panel-header">
+                            <div class="panel-dots" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>System Overview</p>
+                        </div>
+
+                        <div class="availability-card">
+                            <small>Current focus</small>
+                            <h2>Backend systems with deployment discipline.</h2>
+                            <p>
+                                Shipping APIs is only half the job. I like the full chain: schema design, caching,
+                                async workloads, containerization, rollout safety, and observability.
+                            </p>
+                            <div class="availability-pills">
+                                <span>Django & DRF</span>
+                                <span>FastAPI</span>
+                                <span>Docker</span>
+                                <span>AWS & EKS</span>
+                            </div>
+                        </div>
+
+                        <div class="code-card">
+                            <small>snapshot.py</small>
+                            <pre><code><span class="code-accent">engineer</span> = {
+  <span class="code-teal">"name"</span>: "Rami Adel Shawky",
+  <span class="code-teal">"role"</span>: "Backend Engineer",
+  <span class="code-teal">"stack"</span>: ["Python", "Django", "DRF", "Docker"],
+  <span class="code-teal">"infra"</span>: ["Kubernetes", "AWS", "Terraform", "ArgoCD"],
+  <span class="code-teal">"value"</span>: "reliable systems, cleaner delivery"
+}</code></pre>
+                        </div>
+                    </aside>
+                </div>
+
+                <div class="hero-strip">
+                    <div class="stat-card reveal">
+                        <strong data-target="4">0</strong>
+                        <span>Production-grade backend projects delivered for real use cases.</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <strong data-target="85">0</strong>
+                        <span>Release time reduction achieved on a GitOps cloud-native platform.</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <strong data-target="5">0</strong>
+                        <span>Months of intensive ITI training in DevOps and cloud-native systems.</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <strong data-target="8">0</strong>
+                        <span>Plus services coordinated in secure fintech and microservice environments.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="eyebrow">About</span>
+                        <h2>From backend logic to cloud rollout, I like owning the hard middle.</h2>
+                    </div>
+                    <p>
+                        My work sits where application engineering meets operational clarity: building APIs, shaping
+                        databases, handling async tasks, and making deployments boring in the best possible way.
+                    </p>
+                </div>
+
+                <div class="about-grid">
+                    <article class="story-card reveal">
+                        <span class="quote">What I care about</span>
+                        <p>
+                            I build backend systems with a product mindset. That means secure workflows, maintainable
+                            service boundaries, useful reporting, and infrastructure choices that help teams ship with
+                            confidence instead of friction.
+                        </p>
+                        <p>
+                            My core stack is Python with Django, Django REST Framework, Flask, PostgreSQL, Redis, and
+                            Celery. On the infrastructure side, I’m comfortable with Docker, Kubernetes, AWS, GitOps,
+                            CI/CD pipelines, and automation that keeps releases predictable.
+                        </p>
+                    </article>
+
+                    <aside class="focus-card reveal">
+                        <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.72);">Strengths</span>
+                        <h3>Three lanes I naturally operate in.</h3>
+                        <ul class="focus-list">
+                            <li>
+                                <strong>Product-aware APIs</strong>
+                                <span>Authentication, permissions, business logic, integrations, and reporting that stay understandable as the product grows.</span>
+                            </li>
+                            <li>
+                                <strong>Infra-aware delivery</strong>
+                                <span>Containers, orchestration, and CI/CD pipelines built with enough rigor for real environments, not just demos.</span>
+                            </li>
+                            <li>
+                                <strong>Performance discipline</strong>
+                                <span>Query tuning, caching strategies, async jobs, and architecture decisions that keep systems responsive under pressure.</span>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="eyebrow">Selected Projects</span>
+                        <h2>Work that mixes backend depth with deployment realism.</h2>
+                    </div>
+                    <p>
+                        These projects show the blend I enjoy most: solid backend engineering, careful service design,
+                        and the operational layer that turns code into something teams can trust.
+                    </p>
+                </div>
+
+                <div class="work-grid">
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon orange"><i class="fa-solid fa-cloud"></i></div>
+                            <a href="https://github.com/BIGRS-ITI" target="_blank" rel="noreferrer" aria-label="Open BIGRS project">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge orange">85% faster releases</span>
+                        <h3>BIGRS Cloud-Native Platform</h3>
+                        <p>Built a production-grade multi-AZ platform with GitOps workflows, infrastructure automation, and deployment patterns designed for reliability rather than one-off setup.</p>
+                        <div class="project-meta">
+                            <span>AWS EKS</span><span>Terraform</span><span>ArgoCD</span><span>Jenkins</span><span>Kubernetes</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon teal"><i class="fa-solid fa-building-columns"></i></div>
+                            <a href="https://github.com/RamiAdell/secure-fintech-banking-api/" target="_blank" rel="noreferrer" aria-label="Open Banking FinTech API project">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge teal">Security-first backend</span>
+                        <h3>Banking FinTech API</h3>
+                        <p>Engineered a secure banking API with JWT auth, 2FA, KYC verification, and a coordinated microservice setup supporting sensitive workflows and operational scale.</p>
+                        <div class="project-meta">
+                            <span>Django</span><span>DRF</span><span>PostgreSQL</span><span>Celery</span><span>Redis</span><span>Docker</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon gold"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <a href="https://nexmediaai.com" target="_blank" rel="noreferrer" aria-label="Open NexMediaAI">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge gold">AI SaaS product</span>
+                        <h3>NexMediaAI</h3>
+                        <p>Delivered backend services for an AI subscription platform focused on captioning, translation, and payment-backed access, balancing product delivery with service separation.</p>
+                        <div class="project-meta">
+                            <span>Django</span><span>Flask</span><span>Microservices</span><span>Docker</span><span>CI/CD</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon ink"><i class="fa-solid fa-rocket"></i></div>
+                            <a href="https://github.com/ibrahemyasser/3Tier-deployment-with-ArgoCd" target="_blank" rel="noreferrer" aria-label="Open Skypoint project">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge ink">GitOps deployment</span>
+                        <h3>Skypoint 3-Tier Kubernetes Deployment</h3>
+                        <p>Created a production-style GitOps deployment with self-healing rollbacks and multi-environment support, emphasizing repeatability and safer infrastructure changes.</p>
+                        <div class="project-meta">
+                            <span>Kubernetes</span><span>ArgoCD</span><span>GitOps</span><span>PostgreSQL</span><span>NGINX</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon orange"><i class="fa-solid fa-store"></i></div>
+                            <a href="https://store.blkcatagnc.com/" target="_blank" rel="noreferrer" aria-label="Open BlackCat store">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge orange">Full commerce flow</span>
+                        <h3>BlackCat Multi-Vendor E-Commerce</h3>
+                        <p>Built a marketplace backend supporting multi-vendor operations, chat, analytics, secure payments, product configuration, and the admin workflows needed to run the business.</p>
+                        <div class="project-meta">
+                            <span>Django</span><span>PostgreSQL</span><span>React</span><span>Paymob</span><span>WebSocket</span><span>Celery</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="project-top">
+                            <div class="project-icon teal"><i class="fa-solid fa-tower-broadcast"></i></div>
+                            <a href="https://github.com/ramiadell" target="_blank" rel="noreferrer" aria-label="Open GitHub profile">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                        <span class="project-badge teal">High-throughput API</span>
+                        <h3>Streaming Channel API</h3>
+                        <p>Designed a FastAPI backend for video streaming workflows with content management, subscriptions, analytics, and async processing across media-heavy operations.</p>
+                        <div class="project-meta">
+                            <span>FastAPI</span><span>PostgreSQL</span><span>Redis</span><span>FFmpeg</span><span>Celery</span><span>S3</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="eyebrow">Experience</span>
+                        <h2>Growing through product work, freelance delivery, and cloud-heavy training.</h2>
+                    </div>
+                    <p>
+                        My path combines hands-on backend engineering in active product environments, independent
+                        client delivery, and structured DevOps training that sharpened the infrastructure side.
+                    </p>
+                </div>
+
+                <div class="timeline">
+                    <article class="timeline-card reveal">
+                        <div class="timeline-date">
+                            <strong>Jan 2026 - Present</strong>
+                            <span>On Site</span>
+                            <span>Current role</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Backend Engineer</h3>
+                            <div class="timeline-role">
+                                <strong>PoultrySync</strong>
+                                <span>Product backend and reporting systems</span>
+                            </div>
+                            <ul>
+                                <li>Architecting customized admin dashboards for multi-tenant SaaS systems with role-based access control.</li>
+                                <li>Optimizing database performance through indexing strategy and careful Django ORM query design.</li>
+                                <li>Implementing complex business and analytics logic for poultry farm management workflows.</li>
+                                <li>Developing advanced reporting features with aggregated operational insights.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-date">
+                            <strong>Jan 2024 - Present</strong>
+                            <span>Remote</span>
+                            <span>Freelance</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Python Backend Developer</h3>
+                            <div class="timeline-role">
+                                <strong>Freelance</strong>
+                                <span>APIs, microservices, integrations, deployment</span>
+                            </div>
+                            <ul>
+                                <li>Delivered production-grade backend projects across REST APIs, microservices, and AI-backed products.</li>
+                                <li>Built scalable systems with Django and Flask using PostgreSQL, Redis, and Celery for asynchronous workloads.</li>
+                                <li>Containerized and deployed applications using Docker with multi-stage builds and compose-based workflows.</li>
+                                <li>Integrated payment gateways including PayPal, Paymob, and Stripe while improving database performance.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-card reveal">
+                        <div class="timeline-date">
+                            <strong>Jul 2024 - Nov 2024</strong>
+                            <span>Full Time</span>
+                            <span>ITI Program</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Python & DevOps Intern</h3>
+                            <div class="timeline-role">
+                                <strong>Information Technology Institute</strong>
+                                <span>5-month intensive cloud-native program</span>
+                            </div>
+                            <ul>
+                                <li>Trained deeply in cloud-native development, infrastructure automation, and container orchestration.</li>
+                                <li>Built and deployed applications on AWS EKS with CI/CD pipelines and infrastructure as code.</li>
+                                <li>Worked with Linux, Docker, Kubernetes, Jenkins, Terraform, Ansible, Helm, AWS, Prometheus, NGINX, and GitOps via ArgoCD.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="eyebrow">Skill Clusters</span>
+                        <h2>The stack I reach for when backend work needs real delivery support.</h2>
+                    </div>
+                    <p>
+                        I like balanced toolkits more than flashy tool lists: strong application frameworks, good data
+                        choices, reliable async patterns, and infrastructure that helps teams move safely.
+                    </p>
+                </div>
+
+                <div class="cluster-grid">
+                    <article class="cluster-card reveal">
+                        <h3><i class="fa-solid fa-code"></i> Backend Engineering</h3>
+                        <div class="cluster-list">
+                            <span>Python</span><span>Django</span><span>DRF</span><span>Flask</span><span>FastAPI</span><span>JavaScript</span><span>Java</span><span>Bash</span>
+                        </div>
+                    </article>
+
+                    <article class="cluster-card reveal">
+                        <h3><i class="fa-solid fa-database"></i> Data & Messaging</h3>
+                        <div class="cluster-list">
+                            <span>PostgreSQL</span><span>MySQL</span><span>Redis</span><span>RabbitMQ</span><span>SQL</span><span>Celery</span><span>Caching</span>
+                        </div>
+                    </article>
+
+                    <article class="cluster-card reveal">
+                        <h3><i class="fa-solid fa-cloud"></i> DevOps & Cloud</h3>
+                        <div class="cluster-list">
+                            <span>Docker</span><span>Kubernetes</span><span>AWS</span><span>Jenkins</span><span>Terraform</span><span>ArgoCD</span><span>NGINX</span><span>Prometheus</span>
+                        </div>
+                    </article>
+
+                    <article class="cluster-card reveal">
+                        <h3><i class="fa-solid fa-gears"></i> Delivery Mindset</h3>
+                        <div class="cluster-list">
+                            <span>REST APIs</span><span>Microservices</span><span>CI/CD</span><span>GitOps</span><span>RBAC</span><span>Query Optimization</span><span>Reporting</span><span>System Design</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="eyebrow">Education & Certifications</span>
+                        <h2>The academic base and credentials behind the practical work.</h2>
+                    </div>
+                    <p>
+                        My foundation is computer science, but I’ve consistently pushed into applied backend and DevOps
+                        work through hands-on projects, intensive training, and certification paths.
+                    </p>
+                </div>
+
+                <div class="education-grid">
+                    <article class="education-card reveal">
+                        <h3>Bachelor of Computer Science</h3>
+                        <p class="school">Arab Open University</p>
+                        <p>Sep 2020 - Jul 2024 | GPA: 3.15 / 4.0</p>
+                        <ul>
+                            <li>Graduation project: <strong>Tripey Travel Planner</strong>, a Flutter app with AI-based travel planning powered by Google Maps API and a Flask microservices backend.</li>
+                            <li>Graduated with a strong focus on practical software engineering and backend-oriented problem solving.</li>
+                        </ul>
+                    </article>
+
+                    <aside class="education-card reveal">
+                        <h3>Certifications</h3>
+                        <div class="cert-grid">
+                            <div class="cert-item">
+                                <div>
+                                    <strong>Red Hat System Administration</strong>
+                                    <span>RH124 · Oct 2025</span>
+                                </div>
+                                <i class="fa-brands fa-redhat"></i>
+                            </div>
+
+                            <div class="cert-item">
+                                <div>
+                                    <strong>CKAD</strong>
+                                    <span>Jan 2026</span>
+                                </div>
+                                <a href="https://www.credly.com/badges/137ec472-8bf9-4e1c-9115-3cb45bfca30a/public_url" target="_blank" rel="noreferrer" aria-label="Open CKAD credential">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+
+                            <div class="cert-item">
+                                <div>
+                                    <strong>AWS Developer Associate</strong>
+                                    <span>In progress</span>
+                                </div>
+                                <i class="fa-brands fa-aws"></i>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="contact-layout">
+                    <article class="contact-card reveal">
+                        <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.08); color: rgba(255,255,255,0.72);">Contact</span>
+                        <h3>Let’s build something robust, not just something that ships.</h3>
+                        <p>
+                            If you need a backend engineer who thinks about product logic and production realities at
+                            the same time, I’d love to talk. I’m especially interested in API platforms, SaaS systems,
+                            internal tooling, and cloud-minded backend work.
+                        </p>
+
+                        <div class="contact-list">
+                            <a class="contact-link" href="mailto:rami.adel.shawky@gmail.com">
+                                <i class="fa-solid fa-envelope"></i>
+                                <div><span>Email</span><strong>rami.adel.shawky@gmail.com</strong></div>
+                            </a>
+                            <a class="contact-link" href="tel:+201553963637">
+                                <i class="fa-solid fa-phone"></i>
+                                <div><span>Phone</span><strong>+20 1553963637</strong></div>
+                            </a>
+                            <a class="contact-link" href="https://linkedin.com/in/ramiadell" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                                <div><span>LinkedIn</span><strong>linkedin.com/in/ramiadell</strong></div>
+                            </a>
+                            <a class="contact-link" href="https://github.com/ramiadell" target="_blank" rel="noreferrer">
+                                <i class="fa-brands fa-github"></i>
+                                <div><span>GitHub</span><strong>github.com/ramiadell</strong></div>
+                            </a>
+                            <a class="contact-link" href="https://www.credly.com/users/ramiadell" target="_blank" rel="noreferrer">
+                                <i class="fa-solid fa-award"></i>
+                                <div><span>Credly</span><strong>credly.com/users/ramiadell</strong></div>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="form-card reveal">
+                        <h3>Send a message</h3>
+                        <p>Share the product, challenge, or backend problem you’re working through. I’ll reply as soon as I can.</p>
+
+                        <form id="contactForm" action="https://formspree.io/f/xblnayyb" method="POST">
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label for="name">Name</label>
+                                    <input id="name" type="text" name="name" placeholder="Your name" required>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" name="email" placeholder="Your email" required>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Tell me about the project or role." required></textarea>
+                            </div>
+
+                            <button class="button button-primary" type="submit">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                            <p class="form-status" id="form-status" aria-live="polite"></p>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-card">
+                <div>
+                    <p><strong>Rami Adel Shawky</strong><br>Backend Engineer & Cloud Developer designing reliable services and cleaner delivery workflows.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://linkedin.com/in/ramiadell" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/ramiadell" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="mailto:rami.adel.shawky@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="assets/Rami%20Adel.pdf" download aria-label="Download resume"><i class="fa-solid fa-file-arrow-down"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener("click", () => {
+                const isOpen = navLinks.classList.toggle("is-open");
+                menuToggle.setAttribute("aria-expanded", String(isOpen));
+            });
+
+            navLinks.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    navLinks.classList.remove("is-open");
+                    menuToggle.setAttribute("aria-expanded", "false");
+                });
+            });
+        }
+
+        const revealItems = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.16, rootMargin: "0px 0px -40px 0px" });
+
+        revealItems.forEach((item) => revealObserver.observe(item));
+
+        const statNumbers = document.querySelectorAll(".stat-card strong[data-target]");
+        const statObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                const element = entry.target;
+                const target = Number(element.dataset.target || 0);
+                const suffix = target === 85 ? "%" : "+";
+                let current = 0;
+                const step = Math.max(1, Math.ceil(target / 36));
+
+                const timer = window.setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        window.clearInterval(timer);
+                    }
+                    element.textContent = current + suffix;
+                }, 32);
+
+                observer.unobserve(element);
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach((stat) => statObserver.observe(stat));
+
+        const contactForm = document.getElementById("contactForm");
+        const formStatus = document.getElementById("form-status");
+
+        if (contactForm && formStatus) {
+            contactForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalMarkup = submitButton ? submitButton.innerHTML : "";
+
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending';
+                }
+
+                formStatus.textContent = "Sending your message...";
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method || "POST",
+                        body: new FormData(contactForm),
+                        headers: { Accept: "application/json" }
+                    });
+
+                    if (response.ok) {
+                        contactForm.reset();
+                        formStatus.textContent = "Thanks for reaching out. Your message has been sent successfully.";
+                    } else {
+                        formStatus.textContent = "Something went wrong while sending the message. Please try again.";
+                    }
+                } catch (error) {
+                    formStatus.textContent = "Network error. Please check your connection and try again.";
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalMarkup;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
