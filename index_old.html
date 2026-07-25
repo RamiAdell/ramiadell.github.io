@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rami Adel Shawky - Backend Engineer & Cloud Developer</title>
+  
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link rel="shortcut icon" type="image/png" href="assets/logo.png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+  
+    <meta name="theme-color" content="#000000">
+    <meta name="color-scheme" content="dark">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00d4ff;
+            border-radius: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+            background-size: 400% 400%;
+            background-position: 0% 50%;
+            animation: gradientBg 15s ease infinite;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #0a0a0a 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .text-gradient {
+            background: linear-gradient(120deg, #00d4ff 0%, #0099ff 25%, #a855f7 60%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #00d4ff;
+        }
+
+        @keyframes blink {
+
+            0%,
+            49%,
+            100% {
+                opacity: 1;
+            }
+
+            50%,
+            99% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(15px);
+            }
+        }
+
+        .scroll-indicator {
+            animation: bounce 2.5s ease-in-out infinite;
+        }
+
+        @keyframes float-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 212, 255, 0.8);
+            }
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+            }
+        }
+
+        .progress-bar {
+            transition: width 1.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: linear-gradient(90deg, #00d4ff, #0099ff, #a855f7);
+            background-size: 200% 100%;
+        }
+
+        /* Framework-specific progress colors */
+        .progress-django { background: linear-gradient(90deg, #0f5132, #27ae60); }
+        .progress-drf { background: linear-gradient(90deg, #3b82f6, #0ea5ff); }
+        .progress-flask { background: linear-gradient(90deg, #6b7280, #d1d5db); }
+        .progress-fastapi { background: linear-gradient(90deg, #014942, #049688); }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .skill-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            background: rgba(0, 212, 255, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(0, 212, 255, 0.08), transparent);
+            transform: translateX(-100%) translateY(-100%);
+            transition: all 0.7s ease;
+        }
+
+        .project-card:hover::before {
+            transform: translateX(100%) translateY(100%);
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            background: rgba(0, 212, 255, 0.03);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-icon {
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover .project-icon {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 30px;
+            bottom: -30px;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(0, 212, 255, 0.8), rgba(168, 85, 247, 0.4), transparent);
+            transition: background 0.6s ease;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00d4ff, #0099ff);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            animation: pulse-ring 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover::after {
+            transform: scale(1.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .sticky-header {
+            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.95) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding-bottom: 5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, #a855f7);
+            transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.5;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translate(var(--tx), -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(0, 212, 255, 0.6);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: #e5e5e5;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(229, 229, 229, 0.4);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: rgba(0, 212, 255, 0.8);
+            background: rgba(0, 212, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.15);
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.8);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099ff, #a855f7);
+            background-size: 200% 100%;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: 0;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            background-position: 100% 0;
+            box-shadow: 0 15px 50px rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.6);
+            color: #e5e5e5;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-nav-toggle {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-toggle span {
+            width: 100%;
+            height: 2px;
+            background: #e5e5e5;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #e5e5e5;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .mobile-menu a:hover {
+            color: #00d4ff;
+            transform: scale(1.1);
+        }
+
+        @keyframes mesh-gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 100% 0%;
+            }
+
+            75% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes orb-float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+
+            25% {
+                transform: translate(50px, -80px) scale(1.2);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: translate(100px, 0) scale(0.8);
+                opacity: 0.5;
+            }
+
+            75% {
+                transform: translate(-30px, 100px) scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.6));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 60px rgba(0, 212, 255, 1));
+            }
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            animation: mesh-gradient 15s ease infinite;
+            pointer-events: none;
+        }
+
+        .project-expand-btn {
+            background: transparent;
+            border: 2px solid rgba(0, 212, 255, 0.6);
+            color: #e5e5e5;
+            padding: 16px 24px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .project-expand-btn i {
+            font-size: 24px;
+            transition: transform 0.4s ease;
+        }
+
+        .project-expand-btn:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .project-expand-btn.open i {
+            transform: rotate(180deg);
+        }
+
+        .hidden-projects {
+            max-height: 0;
+            opacity: 0;
+            overflow: visible;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hidden-projects.show {
+            max-height: 2000px;
+            opacity: 1;
+            overflow: visible;
+        }
+
+        .hidden-projects > div {
+            padding-top: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            body {
+                background-size: 200% 200%;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar" class="fixed top-0 w-full z-[2001] py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 flex items-center justify-between relative z-50">
+            <a href="#home" class="text-3xl font-bold text-gradient">Rami<span class="text-cyan-400">.</span></a>
+
+            <div class="hidden md:flex space-x-1">
+                <a href="#home" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">About</a>
+                <a href="#skills" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#projects"
+                    class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#experience"
+                    class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#contact" class="nav-link px-4 py-2 text-sm hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden">
+                <div class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+
+
+    </nav>
+
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div id="particles-container" class="absolute inset-0 pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="fade-in-up">
+                <div class="mb-6">
+                    <p class="text-cyan-400 font-semibold text-sm tracking-widest uppercase mb-4">Welcome to my
+                        portfolio</p>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Rami Adel Shawky
+                </h1>
+
+                <h2 class="text-2xl md:text-4xl text-gradient mb-8 font-semibold">
+                    Backend Engineer & Cloud Developer
+                </h2>
+
+                <p id="typing-text" class="text-lg md:text-xl mb-12 h-20 typing-cursor text-cyan-400"></p>
+
+                <div class="flex flex-col md:flex-row gap-4 justify-center mb-12">
+                    <a href="#projects"
+                        class="btn-primary px-8 py-4 rounded-lg font-semibold text-white relative z-10 inline-block">
+                        View My Work
+                    </a>
+                    <a href="assets/Rami%20Adel.pdf" download
+                        class="btn-secondary px-8 py-4 rounded-lg font-semibold inline-block">
+                        Download CV
+                    </a>
+                </div>
+
+                <div class="flex gap-4 justify-center mb-16">
+                    <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin text-lg"></i>
+                    </a>
+                    <a href="https://github.com/ramiadell" target="_blank" class="social-icon">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
+                    <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </a>
+                </div>
+
+                <div class="scroll-indicator">
+                    <a href="#about" class="text-cyan-400 text-3xl inline-block">
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-28 bg-black relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
+                About <span class="text-gradient">Me</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto mb-20 fade-in-up">
+                <div
+                    class="bg-gradient-to-r from-cyan-400/10 to-purple-400/10 border border-cyan-400/20 rounded-lg p-8 md:p-12 backdrop-blur-xl">
+                    <p class="text-lg leading-relaxed mb-6 text-gray-200">
+                        Backend Engineer specializing in Python (Django/DRF, Flask) with growing DevOps expertise in
+                        containerization, orchestration, and cloud infrastructure. Experienced in building REST APIs,
+                        microservices architectures, and deploying applications with CI/CD automation.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-200">
+                        Proficient in database design, caching strategies, and cloud-native deployment patterns.
+                        Passionate about building scalable systems and automating infrastructure to drive innovation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="4">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">Projects Delivered</p>
+                </div>
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="5">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">Months ITI Training</p>
+                </div>
+                <div class="skill-card p-8 rounded-lg text-center fade-in-up">
+                    <div class="stat-number mb-4" data-target="85">0</div>
+                    <p class="text-gray-400 text-sm uppercase tracking-wide font-semibold">% Release Time Reduction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-28 gradient-bg relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
+                Technical <span class="text-gradient">Skills</span>
+            </h2>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-code text-3xl"></i> Languages
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-python text-5xl mb-3 text-cyan-400"></i>
+                            <p class="text-sm font-semibold">Python</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-js text-5xl mb-3 text-yellow-400"></i>
+                            <p class="text-sm font-semibold">JavaScript</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-database text-5xl mb-3 text-blue-400"></i>
+                            <p class="text-sm font-semibold">SQL</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-terminal text-5xl mb-3 text-green-400"></i>
+                            <p class="text-sm font-semibold">Bash</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-java text-5xl mb-3 text-red-400"></i>
+                            <p class="text-sm font-semibold">Java</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-code text-5xl mb-3 text-blue-500"></i>
+                            <p class="text-sm font-semibold">Dart</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-html5 text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">HTML/CSS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-server text-3xl"></i> Backend Frameworks
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="skill-card p-6 rounded-lg">
+                            <img src="assets/drf.svg" alt="Django" class="w-10 h-10 mb-3 object-contain">
+                            <p class="font-semibold mb-4">Django</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar progress-django h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <img src="assets/api-svgrepo-com.svg" alt="DRF" class="w-10 h-10 mb-3 object-contain">
+                            <p class="font-semibold mb-4">DRF</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar progress-drf h-2 rounded-full" style="width: 0%" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <img src="assets/flask.svg" alt="Flask" class="w-10 h-10 mb-3 object-contain">
+                            <p class="font-semibold mb-4">Flask</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar progress-flask h-2 rounded-full" style="width: 0%" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg">
+                            <img src="assets/FastAPI.svg" alt="FastAPI" class="w-10 h-10 mb-3 object-contain">
+                            <p class="font-semibold mb-4">FastAPI</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="progress-bar progress-fastapi h-2 rounded-full" style="width: 0%" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-database text-3xl"></i> Databases
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/PostgresSQL.svg" alt="PostgreSQL" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">PostgreSQL</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/MySQL.svg" alt="MySQL" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">MySQL</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/Redis.svg" alt="Redis" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">Redis</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/RabbitMQ.svg" alt="RabbitMQ" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">RabbitMQ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-cloud text-3xl"></i> DevOps & Cloud
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-docker text-5xl mb-3 text-blue-400"></i>
+                            <p class="text-sm font-semibold">Docker</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fas fa-dharmachakra text-5xl mb-3 text-blue-500"></i>
+                            <p class="text-sm font-semibold">Kubernetes</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/Jenkins.svg" alt="Jenkins" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">Jenkins</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-aws text-5xl mb-3 text-orange-400"></i>
+                            <p class="text-sm font-semibold">AWS</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/nginx-svgrepo-com.svg" alt="Nginx" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">Nginx</p>
+                        </div>
+
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/argocd.svg" alt="ArgoCD" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">ArgoCD</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <i class="fab fa-git-alt text-5xl mb-3 text-orange-600"></i>
+                            <p class="text-sm font-semibold">Git</p>
+                        </div>
+                        <div class="skill-card p-6 rounded-lg text-center">
+                            <img src="assets/Prometheus.svg" alt="Prometheus" class="w-12 h-12 mb-3 object-contain mx-auto">
+                            <p class="text-sm font-semibold">Prometheus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-28 bg-black relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
+                Featured <span class="text-gradient">Projects</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-cloud text-5xl text-cyan-400 project-icon"></i>
+                        <a href="https://github.com/BIGRS-ITI" target="_blank"
+                            class="text-2xl hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">BIGRS - Cloud-Native Platform</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Production-grade multi-AZ platform with GitOps workflow, reducing release time by 85%
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">AWS
+                            EKS</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Terraform</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span
+                            class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Jenkins</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-university text-5xl text-green-400 project-icon"></i>
+                        <a href="https://github.com/RamiAdell/secure-fintech-banking-api/" target="_blank"
+                            class="text-2xl hover:text-green-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Banking FinTech API</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Secure banking API with JWT auth, 2FA, KYC verification, and 8+ orchestrated microservices
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">DRF</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">Celery</span>
+                        <span
+                            class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">Redis</span>
+                        <span
+                            class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-video text-5xl text-purple-400 project-icon"></i>
+                        <a href="https://nexmediaai.com" target="_blank"
+                            class="text-2xl hover:text-purple-400 transition-colors">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">NexMediaAI.com</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        AI SaaS platform for subscription-based video captioning and translation with payment
+                        integration
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+                        <span
+                            class="px-3 py-1 bg-gray-400 bg-opacity-20 text-gray-400 rounded-full text-xs font-semibold">Flask</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Microservices</span>
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-8 rounded-xl fade-in-up">
+                    <div class="flex items-start justify-between mb-6">
+                        <i class="fas fa-rocket text-5xl text-orange-400 project-icon"></i>
+                        <a href="https://github.com/ibrahemyasser/3Tier-deployment-with-ArgoCd" target="_blank"
+                            class="text-2xl hover:text-orange-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3">Skypoint - 3-Tier K8s Deployment</h3>
+                    <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Production-ready GitOps deployment with self-healing rollbacks and multi-environment support
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span
+                            class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Kubernetes</span>
+                        <span
+                            class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-xs font-semibold">ArgoCD</span>
+                        <span
+                            class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">GitOps</span>
+                        <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">NGINX</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="mt-8 text-center">
+                <div id="hidden-projects"
+                    class="hidden-projects grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto text-left">
+                    <div class="project-card p-8 rounded-xl fade-in-up">
+                        <div class="flex items-start justify-between mb-6">
+                            <i class="fas fa-shopping-cart text-5xl text-indigo-400 project-icon"></i>
+                            <a href="https://store.blkcatagnc.com/" target="_blank"
+                                class="text-2xl hover:text-indigo-400 transition-colors">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3"> BlackCat Multi-Vendor E-Commerce</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                        Full-stack marketplace platform supporting a complete e-commerce lifecycle, including multi-vendor management, dynamic product configuration, real-time chatting, order tracking, secure payment processing, and a comprehensive admin/analytics dashboard.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-xs font-semibold">Django</span>
+    
+                            <span
+                                class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">PostgreSQL</span>
+                                                        <span
+                                class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">React</span>
+                            <span
+                                class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-xs font-semibold">Paymob</span>
+                            <span
+                                class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-xs font-semibold">WebSocket</span>
+                            <span
+                                class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">Docker</span>
+                                                            <span
+                                class="px-3 py-1 bg-orange-500 bg-opacity-20 text-orange-500 rounded-full text-xs font-semibold">Redis
+                                Cache</span>
+                                                            <span
+                                class="px-3 py-1 bg-red-500 bg-opacity-20 text-red-500 rounded-full text-xs font-semibold">Celery</span>
+                                <span
+                            class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-xs font-semibold">CI/CD</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card p-8 rounded-xl fade-in-up">
+                        <div class="flex items-start justify-between mb-6">
+                            <i class="fas fa-tv text-5xl text-pink-400 project-icon"></i>
+                            <a href="https://github.com/ramiadell" target="_blank"
+                                class="text-2xl hover:text-pink-400 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">Streaming Channel API</h3>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            High-performance FastAPI backend for video streaming platform with content management, user
+                            subscriptions, adaptive bitrate streaming, and real-time analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-teal-400 bg-opacity-20 text-teal-400 rounded-full text-xs font-semibold">FastAPI</span>
+                            <span
+                                class="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-500 rounded-full text-xs font-semibold">PostgreSQL</span>
+                            <span
+                                class="px-3 py-1 bg-orange-500 bg-opacity-20 text-orange-500 rounded-full text-xs font-semibold">Redis
+                                Cache</span>
+                            <span
+                                class="px-3 py-1 bg-yellow-500 bg-opacity-20 text-yellow-500 rounded-full text-xs font-semibold">FFmpeg</span>
+                            <span
+                                class="px-3 py-1 bg-red-500 bg-opacity-20 text-red-500 rounded-full text-xs font-semibold">Celery</span>
+                            <span
+                                class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-xs font-semibold">S3
+                                Storage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex justify-center w-full">
+                    <button id="expand-projects-btn" class="project-expand-btn text-cyan-400 hover:text-white"
+                        title="Show more projects">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <style>
+        @media (max-width: 767px) {
+            /* Experience: slightly smaller text for mobile */
+            #experience .timeline-item h3 { font-size: 1.125rem; line-height: 1.2; }
+            #experience .timeline-item p { font-size: 0.95rem; }
+            #experience .timeline-item .space-y-3 { font-size: 0.875rem; }
+
+            /* Prevent the absolute logo from overlapping the header on mobile */
+            #experience .timeline-item .bg-gradient-to-r > .flex { padding-right: 35px; }
+
+            /* About: apply same mobile text reduction */
+            #about h2 { font-size: 1.75rem; line-height: 1.15; }
+            #about .bg-gradient-to-r p { font-size: 0.95rem; line-height: 1.4; }
+
+            /* Shrink ITI logo on mobile to avoid overpowering the header */
+            #experience .timeline-item img[alt="ITI"] { width: 56px !important; height: 56px !important; }
+        }
+        </style>
+
+<section id="experience" class="py-28 gradient-bg relative">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
+            <span class="text-gradient">Experience</span>
+        </h2>
+
+        <div class="max-w-4xl mx-auto">
+            <!-- PoultrySync - Current Position -->
+            <div class="timeline-item mb-16 fade-in-left">
+                <div
+                    class="bg-gradient-to-r from-emerald-400/10 to-emerald-400/5 backdrop-blur-xl p-8 rounded-lg border border-emerald-400/20 relative pr-14 md:pr-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-2xl font-bold text-emerald-400">Backend Engineer</h3>
+                            <!-- Add your SVG logo here -->
+                            <img src="https://cdn.prod.website-files.com/66375488f34ae89b01250124/663756d2612ac9d08e073d72_poultry-sync-logo-inverted-rgb.svg" alt="PoultrySync" class="absolute top-4 right-4 w-20 h-20 md:static md:w-20 md:h-20 object-contain opacity-90 z-10" loading="lazy">
+                        </div>
+                        <span class="text-gray-400 text-sm">Jan 2026 - Present</span>
+                    </div>
+                    <p class="text-lg text-emerald-400 mb-6 font-semibold">PoultrySync | On Site</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Architecting and delivering customized admin dashboards for multi-tenant SaaS systems with role-based access control</span>
+                        </li>
+           
+                 
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Optimizing database query performance through strategic indexing, query optimization using Django ORM</span>
+                        </li>
+                      <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Implementing complex business logic and mathematical calculations for poultry farm management analytics</span>
+                        </li>
+                                              <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Developing advanced reporting features with aggregated analytics.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Freelance Position -->
+            <div class="timeline-item mb-16 fade-in-left">
+                <div
+                    class="bg-gradient-to-r from-cyan-400/10 to-cyan-400/5 backdrop-blur-xl p-8 rounded-lg border border-cyan-400/20">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-cyan-400">Python Backend Developer</h3>
+                        <span class="text-gray-400 text-sm">Jan 2024 - Present</span>
+                    </div>
+                    <p class="text-lg text-purple-400 mb-6 font-semibold">Freelance | Remote</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Delivered 4+ production-grade backend projects including REST APIs, microservices,
+                                and AI-powered platforms</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Developed scalable systems using Django/Flask with PostgreSQL, Redis caching, and
+                                Celery for async tasks</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Containerized and deployed applications using Docker with multi-stage builds and
+                                Docker Compose</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Integrated secure payment gateways (PayPal, Paymob, Stripe) and optimized database
+                                performance</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ITI Internship -->
+            <div class="timeline-item fade-in-right">
+                <div
+                    class="bg-gradient-to-r from-purple-400/10 to-purple-400/5 backdrop-blur-xl p-8 rounded-lg border border-purple-400/20 relative pr-14 md:pr-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-2xl font-bold text-purple-400">Python & DevOps Intern</h3>
+                            <img src="assets/WhiteLogo.svg" alt="ITI" class="absolute top-4 right-4 w-20 h-20 md:static md:w-20 md:h-20 object-contain opacity-90 z-10" loading="lazy">
+                        </div>
+                        <span class="text-gray-400 text-sm">Jul 2024 - Nov 2024</span>
+                    </div>
+                    <p class="text-lg text-cyan-400 mb-6 font-semibold">Information Technology Institute (ITI) |
+                        5-month Intensive Full-Time Program</p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Hands-on training in cloud-native development, infrastructure automation, and
+                                container orchestration</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Built and deployed applications on AWS EKS with automated CI/CD pipelines and
+                                infrastructure as code</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1 flex-shrink-0"></i>
+                            <span>Core Technologies: Linux, Docker, Kubernetes (EKS), Jenkins CI/CD, Terraform
+                                (IaC), Ansible, Helm, AWS, Prometheus, NGINX, GitOps (ArgoCD)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="education" class="py-28 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in-up">
+                Education & <span class="text-gradient">Certifications</span>
+            </h2>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="skill-card p-8 md:p-12 rounded-lg mb-12 fade-in-up">
+                    <div class="flex items-start justify-between gap-6">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">Bachelor's of Computer Science</h3>
+                            <p class="text-cyan-400 text-lg font-semibold mb-2">Arab Open University</p>
+                            <p class="text-gray-400">Sep 2020 - July 2024 | GPA: 3.15/4.0</p>
+                        </div>
+                        <i class="fas fa-graduation-cap text-6xl text-cyan-400 flex-shrink-0"></i>
+                    </div>
+                    <div class="mt-6 p-6 bg-black bg-opacity-40 rounded-lg border-l-4 border-cyan-400">
+                        <p class="text-sm text-gray-300">
+                            <strong class="text-cyan-400 block mb-2">Graduation Project:</strong> Tripey Travel Planner
+                            (Grade: A+) — Flutter app with AI-based travel planning using Google Maps API and Flask
+                            microservices backend
+                        </p>
+                    </div>
+                </div>
+
+                <div class="fade-in-up">
+                    <h3 class="text-2xl font-semibold mb-10 text-cyan-400 flex items-center gap-3">
+                        <i class="fas fa-certificate text-3xl"></i> Certifications
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="skill-card p-8 rounded-lg text-center">
+                            <i class="fab fa-redhat text-6xl mb-4 text-red-500"></i>
+                            <h4 class="font-bold mb-2 text-lg">Red Hat System</h4>
+                            <p class="text-sm text-gray-400">RH124 - Oct 2025</p>
+                        </div>
+                        <div class="skill-card p-8 rounded-lg text-center relative">
+                            <a href="https://www.credly.com/badges/137ec472-8bf9-4e1c-9115-3cb45bfca30a/public_url" target="_blank" rel="noopener noreferrer" class="absolute top-4 right-4 text-2xl hover:text-cyan-400">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <img src="assets/kubernetes-ckad-color-300x294.avif" alt="CKAD" class="w-24 h-24 mb-4 object-contain mx-auto">
+                            <h4 class="font-bold mb-2 text-lg">CKAD</h4>
+                            <p class="text-sm text-gray-400">Jan 2026</p>
+                        </div>
+                        <div class="skill-card p-8 rounded-lg text-center">
+                            <i class="fab fa-aws text-6xl mb-4 text-orange-400"></i>
+                            <h4 class="font-bold mb-2 text-lg">AWS Developer</h4>
+                            <p class="text-sm text-gray-400">Associate - Ongoing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-28 gradient-bg relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 fade-in-up">
+                Let's Build Something <span class="text-gradient">Amazing</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-20 fade-in-up text-lg">Have a project in mind? Let's connect and
+                create something extraordinary together!</p>
+
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="fade-in-left">
+                    <h3 class="text-2xl font-bold mb-10">Get In Touch</h3>
+                    <div class="space-y-6">
+                        <a href="mailto:rami.adel.shawky@gmail.com"
+                            class="flex items-start md:items-center gap-4 p-4 rounded-lg hover:bg-cyan-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-cyan-400/20 rounded-full flex items-center justify-center group-hover:bg-cyan-400/30 transition-all flex-shrink-0">
+                                <i class="fas fa-envelope text-cyan-400 text-xl"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <p class="text-sm text-gray-400">Email</p>
+                                <p class="font-semibold group-hover:text-cyan-400 transition-colors break-words">
+                                    rami.adel.shawky@gmail.com</p>
+                            </div>
+                        </a>
+                        <a href="tel:+201553963637"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-green-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-green-400/20 rounded-full flex items-center justify-center group-hover:bg-green-400/30 transition-all">
+                                <i class="fas fa-phone text-green-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Phone</p>
+                                <p class="font-semibold group-hover:text-green-400 transition-colors">+20 1553963637</p>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/ramiadell" target="_blank"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-purple-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-purple-400/20 rounded-full flex items-center justify-center group-hover:bg-purple-400/30 transition-all">
+                                <i class="fab fa-linkedin text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">LinkedIn</p>
+                                <p class="font-semibold group-hover:text-purple-400 transition-colors">ramiadell</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/ramiadell" target="_blank"
+                            class="flex items-center gap-4 p-4 rounded-lg hover:bg-gray-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-gray-400/20 rounded-full flex items-center justify-center group-hover:bg-gray-400/30 transition-all">
+                                <i class="fab fa-github text-gray-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">GitHub</p>
+                                <p class="font-semibold group-hover:text-gray-400 transition-colors">ramiadell</p>
+                            </div>
+                        </a>
+                        <a href="https://www.credly.com/users/ramiadell" target="_blank" rel="noopener noreferrer"
+                            class="flex items-start md:items-center gap-4 p-4 rounded-lg hover:bg-yellow-400/10 transition-all group">
+                            <div
+                                class="w-14 h-14 bg-yellow-400/20 rounded-full flex items-center justify-center group-hover:bg-yellow-400/30 transition-all flex-shrink-0">
+                                <i class="fas fa-award text-yellow-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-400">Credly</p>
+                                <p class="font-semibold group-hover:text-yellow-400 transition-colors">ramiadell</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="fade-in-right">
+                    <form id="contactForm" action="https://formspree.io/f/xblnayyb" method="POST"
+                        class="contact-form space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Name</label>
+                            <input type="text" name="name" placeholder="Your Name" required
+                                class="w-full px-5 py-3 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Email</label>
+                            <input type="email" name="email" placeholder="Your Email" required
+                                class="w-full px-5 py-3 rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2 text-gray-300">Message</label>
+                            <textarea name="message" rows="5" placeholder="Your Message" required
+                                class="w-full px-5 py-3 rounded-lg resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="btn-primary w-full px-8 py-4 rounded-lg font-semibold text-white relative">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-12 border-t border-cyan-400/10 relative">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <h3 class="text-lg font-bold text-gradient mb-4">Rami Adel Shawky</h3>
+                    <p class="text-gray-400 text-sm">Python Backend Engineer & DevOps Cloud Developer crafting scalable solutions
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-cyan-400 mb-4">Quick Links</h4>
+                    <div class="space-y-2 text-sm">
+                        <a href="#home" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a>
+                        <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors block">About</a>
+                        <a href="#projects"
+                            class="text-gray-400 hover:text-cyan-400 transition-colors block">Projects</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-cyan-400 mb-4">Follow</h4>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/in/ramiadell" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin text-sm"></i>
+                        </a>
+                        <a href="https://github.com/ramiadell" target="_blank" class="social-icon">
+                            <i class="fab fa-github text-sm"></i>
+                        </a>
+                        <a href="https://www.credly.com/users/ramiadell" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <i class="fas fa-award text-sm"></i>
+                        </a>
+                        <a href="mailto:rami.adel.shawky@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-cyan-400/10 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2026 Rami Adel Shawky. Crafted with passion and code.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up text-white"></i>
+    </div>
+
+    <script>
+        const typingTexts = [
+            "Building Scalable Systems",
+            "Cloud-Native Architecture",
+            "Python Backend Development",
+            "DevOps & CI/CD Enthusiast"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing-text');
+
+        function type() {
+            const currentText = typingTexts[textIndex];
+
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentText.length) {
+                setTimeout(() => isDeleting = true, 2500);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typingTexts.length;
+            }
+
+            const typingSpeed = isDeleting ? 40 : 80;
+            setTimeout(type, typingSpeed);
+        }
+
+        setTimeout(type, 500);
+
+        function createParticles() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i < 40; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                const tx = (Math.random() - 0.5) * 200;
+                const ty = Math.random() * 100;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .scale-in').forEach(el => observer.observe(el));
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            let current = 0;
+            const increment = target / 120;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (target === 85 ? '' : '+');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + (target === 85 ? '' : '+');
+                }
+            }, 16);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(el => statsObserver.observe(el));
+
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.getAttribute('data-width');
+                    entry.target.style.width = width + '%';
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.progress-bar').forEach(el => progressObserver.observe(el));
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('sticky-header');
+            } else {
+                navbar.classList.remove('sticky-header');
+            }
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu.classList.contains('open')) {
+                        mobileMenu.classList.remove('open');
+                        document.getElementById('mobile-menu-btn').querySelector('.mobile-nav-toggle').classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const toggle = mobileMenuBtn.querySelector('.mobile-nav-toggle');
+            const isOpen = mobileMenu.classList.toggle('open');
+            toggle.classList.toggle('active');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalText = submitButton ? submitButton.innerHTML : null;
+                if (submitButton) submitButton.disabled = true;
+                if (submitButton) submitButton.innerText = 'Sending...';
+
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method || 'POST',
+                        body: new FormData(contactForm),
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        alert('Thank you for your message! I will get back to you soon.');
+                        contactForm.reset();
+                    } else {
+                        const data = await response.json().catch(() => ({}));
+                        const errorMessage = (data && data.error) ? data.error : 'There was an error sending your message. Please try again later.';
+                        alert(errorMessage);
+                    }
+                } catch (err) {
+                    alert('Network error. Please check your connection and try again.');
+                } finally {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        if (originalText) submitButton.innerHTML = originalText;
+                    }
+                }
+            });
+        }
+
+
+
+        const expandBtn = document.getElementById('expand-projects-btn');
+        const hiddenProjects = document.getElementById('hidden-projects');
+
+        expandBtn.addEventListener('click', () => {
+            const isHidden = !hiddenProjects.classList.contains('show');
+            hiddenProjects.classList.toggle('show');
+
+            if (isHidden) {
+                hiddenProjects.style.maxHeight = hiddenProjects.scrollHeight + "px";
+            } else {
+                hiddenProjects.style.maxHeight = null;
+            }
+
+            expandBtn.classList.toggle('open');
+            expandBtn.title = isHidden ? 'Hide more projects' : 'Show more projects';
+        });
+
+        const PORTFOLIO_VISIT_URL = 'https://api.ramiadel.cloud/api/portfolio/visit';
+        const PORTFOLIO_COUNT_URL = 'https://api.ramiadel.cloud/api/portfolio/count';
+
+        /**
+         * Track a portfolio visitor and display the updated count.
+         * Call this on page load — it increments the counter and updates the UI.
+         *
+         * Expected HTML:
+         *   <span id="portfolio-visitor-count-pill" style="display:none">
+         *     <span id="portfolio-visitor-count"></span> visitors
+         *   </span>
+         */
+        async function trackPortfolioVisitor() {
+        try {
+            const res = await fetch(PORTFOLIO_VISIT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+            const data = await res.json();
+            updatePortfolioCountUI(data.count);
+            }
+        } catch (e) {
+            console.warn('Portfolio counter API offline or unconfigured:', e.message);
+        }
+        }
+
+        /**
+         * Fetch the current portfolio visitor count without incrementing it.
+         * Useful for admin views or status pages.
+         */
+        async function getPortfolioCount() {
+        try {
+            const res = await fetch(PORTFOLIO_COUNT_URL, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            });
+            if (res.ok) {
+            const data = await res.json();
+            updatePortfolioCountUI(data.count);
+            return data.count;
+            }
+        } catch (e) {
+            console.warn('Portfolio count API offline or unconfigured:', e.message);
+        }
+        return null;
+        }
+
+        /** Internal helper — writes the count to the DOM if the pill elements exist. */
+        function updatePortfolioCountUI(count) {
+        const pill    = document.getElementById('portfolio-visitor-count-pill');
+        const countEl = document.getElementById('portfolio-visitor-count');
+        if (pill && countEl) {
+            countEl.textContent = count;
+            pill.style.display  = 'inline-block';
+        }
+        }
+
+        // Auto-run on page load
+        trackPortfolioVisitor();
+
+    </script>
+</body>
+
+</html>
