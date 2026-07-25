@@ -53,7 +53,7 @@ textarea{resize:vertical}
   <div style="max-width:1480px;margin:0 auto;padding:0 clamp(16px,5vw,72px);height:58px;display:flex;align-items:center;gap:clamp(14px,2.4vw,30px)">
     <a href="#top" style="display:flex;align-items:center;gap:10px;flex:0 0 auto">
       <span style="width:8px;height:8px;border-radius:50%;background:var(--acc,#FF7A18);animation:pulseDot 2.8s ease-out infinite"></span>
-      <span style="font:900 15px/1 Archivo,Helvetica,sans-serif;letter-spacing:-.02em;text-transform:uppercase;font-stretch:118%">Rami Adel Shawky</span>
+      <span style="font:900 15px/1 Archivo,Helvetica,sans-serif;letter-spacing:-.02em;text-transform:uppercase;font-stretch:118%;white-space:nowrap">{{ wordmark }}</span>
     </a>
     <sc-if value="{{ navOn }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;gap:clamp(12px,1.6vw,24px);font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8E9299">
@@ -568,9 +568,11 @@ class Component extends DCLogic {
     document.title = 'Rami Adel Shawky — Python Backend Engineer';
 
     this.mq = window.matchMedia('(min-width:1120px)');
-    this.onMq = () => this.setState({ wide: this.mq.matches });
+    this.mqC = window.matchMedia('(max-width:560px)');
+    this.onMq = () => this.setState({ wide: this.mq.matches, compact: this.mqC.matches });
     if (this.mq.addEventListener) this.mq.addEventListener('change', this.onMq);
-    this.setState({ wide: this.mq.matches });
+    if (this.mqC.addEventListener) this.mqC.addEventListener('change', this.onMq);
+    this.onMq();
 
     const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; };
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -605,6 +607,7 @@ class Component extends DCLogic {
     if (this.io) this.io.disconnect();
     if (this.spy) this.spy.disconnect();
     if (this.mq && this.mq.removeEventListener) this.mq.removeEventListener('change', this.onMq);
+    if (this.mqC && this.mqC.removeEventListener) this.mqC.removeEventListener('change', this.onMq);
     clearTimeout(this._t);
     clearTimeout(this._dgT);
   }
@@ -776,6 +779,7 @@ class Component extends DCLogic {
       showing: '0' + n,
       railOn: this.props.showRail !== false && this.state.wide,
       navOn: this.state.wide,
+      wordmark: this.state.compact ? 'Rami' : 'Rami Adel Shawky',
       diagramOn: this.props.heroDiagram !== false,
       copy: this.copy,
       copyLabel: this.state.copied ? 'COPIED ✓' : 'COPY',
