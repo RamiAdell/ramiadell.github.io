@@ -33,6 +33,7 @@ a:hover{color:var(--acc,#FF7A18)}
 @keyframes fieldA{0%{transform:translate3d(-12vw,-10vh,0) scale(1);opacity:.55}28%{transform:translate3d(38vw,18vh,0) scale(1.28);opacity:.95}61%{transform:translate3d(6vw,58vh,0) scale(.92);opacity:.45}100%{transform:translate3d(-12vw,-10vh,0) scale(1);opacity:.55}}
 @keyframes fieldB{0%{transform:translate3d(62vw,72vh,0) scale(1.1);opacity:.4}34%{transform:translate3d(18vw,12vh,0) scale(.88);opacity:.8}72%{transform:translate3d(78vw,38vh,0) scale(1.32);opacity:.5}100%{transform:translate3d(62vw,72vh,0) scale(1.1);opacity:.4}}
 @keyframes fieldC{0%{transform:translate3d(84vw,6vh,0) scale(.9);opacity:.5}47%{transform:translate3d(26vw,84vh,0) scale(1.22);opacity:.85}100%{transform:translate3d(84vw,6vh,0) scale(.9);opacity:.5}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 14px var(--acc-20)}50%{box-shadow:0 0 26px var(--acc-40)}}
 @keyframes sweep{0%{transform:translateX(0);opacity:0}9%{opacity:1}91%{opacity:1}100%{transform:translateX(100%);opacity:0}}
 input::placeholder,textarea::placeholder{color:#6E737A;font-family:'JetBrains Mono',monospace;letter-spacing:.12em;font-size:11px}
 input,textarea,button{font-family:'JetBrains Mono',monospace}
@@ -127,7 +128,7 @@ textarea{resize:vertical}
               <sc-for list="{{ dgRows }}" as="r" hint-placeholder-count="9">
                 <div style="display:grid;grid-template-columns:clamp(134px,13.5vw,176px) 1fr;gap:12px;align-items:center">
                   <span style="font:400 clamp(8.6px,.92vw,9.5px)/1 'JetBrains Mono',monospace;letter-spacing:.1em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:{{ r.pad }};color:{{ r.lc }};font-weight:{{ r.fw }}">{{ r.label }}</span>
-                  <span style="position:relative;display:block;height:9px;background:rgba(239,235,227,.045);border-radius:2px"><span style="position:absolute;top:0;bottom:0;border-radius:2px;transition:left .55s cubic-bezier(.2,.8,.2,1),width .55s cubic-bezier(.2,.8,.2,1),background .3s ease;left:{{ r.left }};width:{{ r.w }};min-width:{{ r.mw }};background:{{ r.bg }};border:{{ r.bd }};box-shadow:{{ r.sh }}"></span></span>
+                  <span style="position:relative;display:block;height:9px;background:rgba(239,235,227,.045);border-radius:2px"><span style="position:absolute;top:0;bottom:0;border-radius:2px;transition:left .55s cubic-bezier(.2,.8,.2,1),width .55s cubic-bezier(.2,.8,.2,1),background .3s ease;left:{{ r.left }};width:{{ r.w }};min-width:{{ r.mw }};background:{{ r.bg }};border:{{ r.bd }};box-shadow:{{ r.sh }};animation:{{ r.an }}"></span></span>
                 </div>
               </sc-for>
               <div style="display:grid;grid-template-columns:clamp(134px,13.5vw,176px) 1fr;gap:12px;align-items:center;margin-top:10px">
@@ -173,10 +174,6 @@ textarea{resize:vertical}
           <div style="margin-top:10px;font:400 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8E9299">YEARS SHIPPING<br>TO PRODUCTION</div>
         </div>
         <div style="background:#0B0C0E;box-shadow:0 0 0 1px rgba(239,235,227,.12);padding:clamp(20px,2.6vw,30px)">
-          <div style="font:900 clamp(32px,4vw,54px)/1 Archivo,sans-serif;letter-spacing:-.04em">7</div>
-          <div style="margin-top:10px;font:400 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8E9299">CORE MODULES OWNED<br>AT POULTRYSYNC</div>
-        </div>
-        <div style="background:#0B0C0E;box-shadow:0 0 0 1px rgba(239,235,227,.12);padding:clamp(20px,2.6vw,30px)">
           <div style="font:900 clamp(32px,4vw,54px)/1 Archivo,sans-serif;letter-spacing:-.04em">4+</div>
           <div style="margin-top:10px;font:400 10px/1.5 'JetBrains Mono',monospace;letter-spacing:.16em;color:#8E9299">PRODUCTION<br>PLATFORMS BUILT</div>
         </div>
@@ -200,38 +197,79 @@ textarea{resize:vertical}
       </div>
 
       <article data-reveal="2" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1);margin-top:clamp(20px,3vw,36px)">
-        <div style="transition:opacity .4s ease;opacity:{{ dimA }}">
+        <div style="transition:opacity .4s ease;opacity:{{ dimD }}">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,4vw,60px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid rgba(239,235,227,.14)">
             <div>
               <div style="display:flex;align-items:baseline;gap:14px">
                 <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">01</span>
-                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">CLOUD INFRASTRUCTURE</span>
+                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">MARKETPLACE</span>
               </div>
-              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">BIGRS</h3>
-              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">A multi-AZ Kubernetes platform on AWS, provisioned, deployed and healed entirely by pipeline.</p>
+              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">Black Cat Store</h3>
+              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">Vendor onboarding, a dynamic pricing engine and live order operations in one multi-vendor platform.</p>
               <div style="margin-top:24px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(239,235,227,.16);padding:12px 16px;border-radius:2px">
-                <span style="font:900 clamp(24px,2.8vw,38px)/1 Archivo,sans-serif;letter-spacing:-.04em;color:var(--acc,#FF7A18)">−85%</span>
-                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">RELEASE<br>CYCLE TIME</span>
+                <span style="font:800 clamp(15px,1.7vw,20px)/1 Archivo,sans-serif;letter-spacing:-.02em;color:var(--acc,#FF7A18)">DYNAMIC</span>
+                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">PRICING ENGINE ·<br>REAL-TIME API</span>
               </div>
               <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-                <a href="https://github.com/BIGRS-ITI" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">SOURCE ↗</a>
+                <a href="https://blkcatagnc.store/" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">VISIT STORE ↗</a>
+                <span style="font:400 9.5px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:#6E737A">PRIVATE REPO ·<br>WALKTHROUGH ON REQUEST</span>
               </div>
             </div>
             <div>
               <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:13px">
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Architected and deployed a production-grade, multi-AZ platform on AWS EKS with high availability.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>GitOps workflow on ArgoCD with automated image updates and self-healing deployments.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Jenkins CI/CD driving automated Docker builds straight into ECR.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Whole AWS footprint as code in Terraform: VPC, EKS, RDS, ECR.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Multi-vendor marketplace with vendor approval, document verification, commission handling and tiered subscriptions.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Dynamic pricing engine with property-based additions and quantity-tiered discounts over a real-time API.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Admin dashboard covering vendor oversight, order lifecycle and live platform analytics.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Order-scoped real-time chat with file attachments and multi-channel notifications.</span></li>
               </ul>
               <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px">
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">AWS EKS</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">TERRAFORM</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">ARGOCD</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">JENKINS</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">NODE.JS</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">MYSQL</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DJANGO</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DRF</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">POSTGRESQL</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">CELERY</span>
                 <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">REDIS</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">JWT</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DOCKER</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal="0" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)">
+        <div style="transition:opacity .4s ease;opacity:{{ dimC }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,4vw,60px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid rgba(239,235,227,.14)">
+            <div>
+              <div style="display:flex;align-items:baseline;gap:14px">
+                <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">02</span>
+                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">AI SAAS</span>
+              </div>
+              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">NexMediaAI</h3>
+              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">Subscription video captioning and translation, split into isolated services behind a Django gateway.</p>
+              <div style="margin-top:24px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(239,235,227,.16);padding:12px 16px;border-radius:2px">
+                <span style="font:800 clamp(15px,1.7vw,20px)/1 Archivo,sans-serif;letter-spacing:-.02em;color:var(--acc,#FF7A18)">SERVICE-PER-TOOL</span>
+                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">ISOLATED FLASK APPS ·<br>CIRCUIT-BREAKER CALLS</span>
+              </div>
+              <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center">
+                <a href="https://www.nexmediaai.com/" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">VISIT PLATFORM ↗</a>
+                <span style="font:400 9.5px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:#6E737A">PRIVATE REPO ·<br>WALKTHROUGH ON REQUEST</span>
+              </div>
+            </div>
+            <div>
+              <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:13px">
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>An independent Flask service per tool, with service discovery and circuit breakers guarding inter-service calls so one failing tool can't cascade.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Django–Flask hybrid system tied together over REST APIs.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>PayPal and Paymob integrations with webhook-driven subscription billing.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Containerised services deployed on a VPS behind NGINX with HTTPS/SSL.</span></li>
+              </ul>
+              <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px">
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DJANGO</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">FLASK</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">POSTGRESQL</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">MICROSERVICES</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DOCKER</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">NGINX</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">CI/CD</span>
               </div>
             </div>
           </div>
@@ -243,7 +281,7 @@ textarea{resize:vertical}
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,4vw,60px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid rgba(239,235,227,.14)">
             <div>
               <div style="display:flex;align-items:baseline;gap:14px">
-                <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">02</span>
+                <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">03</span>
                 <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">FINTECH</span>
               </div>
               <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">Banking API</h3>
@@ -279,79 +317,38 @@ textarea{resize:vertical}
       </article>
 
       <article data-reveal="0" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)">
-        <div style="transition:opacity .4s ease;opacity:{{ dimC }}">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,4vw,60px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid rgba(239,235,227,.14)">
-            <div>
-              <div style="display:flex;align-items:baseline;gap:14px">
-                <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">03</span>
-                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">AI SAAS</span>
-              </div>
-              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">NexMediaAI</h3>
-              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">Subscription video captioning and translation, split across a Django–Flask service mesh.</p>
-              <div style="margin-top:24px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(239,235,227,.16);padding:12px 16px;border-radius:2px">
-                <span style="font:900 clamp(20px,2.2vw,28px)/1 Archivo,sans-serif;letter-spacing:-.03em;color:var(--acc,#FF7A18)">LIVE</span>
-                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">NEXMEDIAAI.COM<br>VPS · HTTPS</span>
-              </div>
-              <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-                <a href="https://www.nexmediaai.com/" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">VISIT PLATFORM ↗</a>
-                <span style="font:400 9.5px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:#6E737A">PRIVATE REPO ·<br>WALKTHROUGH ON REQUEST</span>
-              </div>
-            </div>
-            <div>
-              <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:13px">
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Microservice architecture with service discovery and inter-service communication.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Django–Flask hybrid system tied together over REST APIs.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>PayPal and Paymob integrations with webhook-driven subscription billing.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Containerised services deployed on a VPS behind NGINX with HTTPS/SSL.</span></li>
-              </ul>
-              <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px">
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DJANGO</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">FLASK</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">POSTGRESQL</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">MICROSERVICES</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DOCKER</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">NGINX</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">CI/CD</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article data-reveal="0" style="opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)">
-        <div style="transition:opacity .4s ease;opacity:{{ dimD }}">
+        <div style="transition:opacity .4s ease;opacity:{{ dimA }}">
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(20px,4vw,60px);padding:clamp(26px,4vw,46px) 0;border-top:1px solid rgba(239,235,227,.14);border-bottom:1px solid rgba(239,235,227,.14)">
             <div>
               <div style="display:flex;align-items:baseline;gap:14px">
                 <span style="font:500 11px/1 'JetBrains Mono',monospace;letter-spacing:.2em;color:var(--acc,#FF7A18)">04</span>
-                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">MARKETPLACE</span>
+                <span style="font:400 10px/1 'JetBrains Mono',monospace;letter-spacing:.18em;color:#8E9299">CLOUD INFRASTRUCTURE</span>
               </div>
-              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">Black Cat Store</h3>
-              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">Vendor onboarding, a dynamic pricing engine and live order operations in one multi-vendor platform.</p>
+              <h3 style="margin:14px 0 0;font:800 clamp(28px,3.6vw,50px)/1 Archivo,sans-serif;letter-spacing:-.035em;font-stretch:108%">BIGRS</h3>
+              <p style="margin:14px 0 0;max-width:30ch;font:400 clamp(15px,1.25vw,18px)/1.5 Archivo,sans-serif;color:#B9BCC1;text-wrap:pretty">A multi-AZ Kubernetes platform on AWS, provisioned, deployed and healed entirely by pipeline.</p>
               <div style="margin-top:24px;display:inline-flex;align-items:center;gap:12px;border:1px solid rgba(239,235,227,.16);padding:12px 16px;border-radius:2px">
-                <span style="font:900 clamp(20px,2.2vw,28px)/1 Archivo,sans-serif;letter-spacing:-.03em;color:var(--acc,#FF7A18)">MULTI</span>
-                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">VENDOR · TIERED<br>SUBSCRIPTIONS</span>
+                <span style="font:900 clamp(24px,2.8vw,38px)/1 Archivo,sans-serif;letter-spacing:-.04em;color:var(--acc,#FF7A18)">−85%</span>
+                <span style="font:400 9.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.14em;color:#8E9299">RELEASE<br>CYCLE TIME</span>
               </div>
               <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:9px;align-items:center">
-                <a href="https://store.blkcatagnc.com/" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">VISIT STORE ↗</a>
-                <span style="font:400 9.5px/1.5 'JetBrains Mono',monospace;letter-spacing:.12em;color:#6E737A">PRIVATE REPO ·<br>WALKTHROUGH ON REQUEST</span>
+                <a href="https://github.com/BIGRS-ITI" target="_blank" rel="noopener" style="font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.14em;padding:10px 13px;border:1px solid rgba(239,235,227,.22);border-radius:2px;transition:border-color .25s,color .25s" style-hover="border-color:#EFEBE3">SOURCE ↗</a>
               </div>
             </div>
             <div>
               <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:13px">
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Vendor approval, document verification, commission handling and tiered subscriptions.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Dynamic pricing engine with property-based additions and quantity-tiered discounts over a real-time API.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Admin dashboard covering vendor oversight, order lifecycle and live platform analytics.</span></li>
-                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Order-scoped real-time chat with file attachments and multi-channel notifications.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Architected and deployed a production-grade, multi-AZ platform on AWS EKS with high availability.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>GitOps workflow on ArgoCD with automated image updates and self-healing deployments.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Jenkins CI/CD driving automated Docker builds straight into ECR.</span></li>
+                <li style="display:grid;grid-template-columns:14px 1fr;gap:10px;font:400 clamp(14px,1.15vw,16.5px)/1.55 Archivo,sans-serif;color:#D2CFC9;text-wrap:pretty"><span style="color:var(--acc,#FF7A18);font:400 11px/1.8 'JetBrains Mono',monospace">▸</span><span>Whole AWS footprint as code in Terraform: VPC, EKS, RDS, ECR.</span></li>
               </ul>
               <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px">
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DJANGO</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DRF</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">POSTGRESQL</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">CELERY</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">AWS EKS</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">TERRAFORM</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">ARGOCD</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">JENKINS</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">NODE.JS</span>
+                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">MYSQL</span>
                 <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">REDIS</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">JWT</span>
-                <span style="font:400 9.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;color:#9AA0A6;border:1px solid rgba(239,235,227,.14);padding:7px 10px;border-radius:2px">DOCKER</span>
               </div>
             </div>
           </div>
@@ -560,6 +557,19 @@ textarea{resize:vertical}
 </main>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF7A18&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#FF7A18&quot;,&quot;#C9F24A&quot;,&quot;#5AD1FF&quot;,&quot;#EFEBE3&quot;],&quot;section&quot;:&quot;Theme&quot;},&quot;showRail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;heroDiagram&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+/* ── ACCENT PALETTE ──────────────────────────────────────────────
+   The 4 swatches in Tweaks. Edit a hex here to change that swatch.
+   PALETTE[0] is the site default when no tweak is set.
+   To make a Tweaks swatch match, put the same hex in the
+   data-props JSON at the bottom of this file: accent.options
+   ──────────────────────────────────────────────────────────────── */
+const PALETTE = [
+  '#FF7A18', // 0 · signal orange  (default)
+  '#C9F24A', // 1 · terminal lime
+  '#5AD1FF', // 2 · cyan
+  '#EFEBE3'  // 3 · bone (monochrome)
+];
+
 class Component extends DCLogic {
   state = { filter: 'all', active: 0, copied: false, wide: true, send: 'idle', dg: 'django', dgReady: false };
 
@@ -613,7 +623,7 @@ class Component extends DCLogic {
   }
 
   applyAccent() {
-    const hex = this.props.accent || '#FF7A18';
+    const hex = this.props.accent || PALETTE[0];
     document.documentElement.style.setProperty('--acc', hex);
     const n = parseInt(hex.slice(1), 16);
     const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].join(',');
@@ -655,7 +665,7 @@ class Component extends DCLogic {
       outline: { bg: 'transparent', bd: '1px solid rgba(239,235,227,.26)', sh: 'none', lc: '#8E9299', fw: '400' },
       l1: { bg: 'rgba(239,235,227,.16)', bd: 'none', sh: 'none', lc: '#8E9299', fw: '400' },
       l2: { bg: 'rgba(239,235,227,.24)', bd: 'none', sh: 'none', lc: '#8E9299', fw: '400' },
-      acc: { bg: 'var(--acc,#FF7A18)', bd: 'none', sh: '0 0 20px var(--acc-30)', lc: 'var(--acc,#FF7A18)', fw: '500' },
+      acc: { bg: 'var(--acc,#FF7A18)', bd: 'none', sh: '0 0 20px var(--acc-30)', lc: 'var(--acc,#FF7A18)', fw: '500', an: 'glowPulse 3.6s ease-in-out infinite' },
       leaf: { bg: 'rgba(239,235,227,.5)', bd: 'none', sh: 'none', lc: '#6E737A', fw: '400' },
       tick: { bg: 'var(--acc,#FF7A18)', bd: 'none', sh: 'none', lc: '#6E737A', fw: '400' },
       solid: { bg: '#EFEBE3', bd: 'none', sh: 'none', lc: '#EFEBE3', fw: '500' }
@@ -720,7 +730,8 @@ class Component extends DCLogic {
       const k = K[r[4]];
       return {
         label: r[0], pad: (r[1] * 3) + 'px', lc: k.lc, fw: k.fw, mw: on ? '3px' : '0px',
-        left: r[2] + '%', w: (on ? r[3] : 0) + '%', bg: k.bg, bd: k.bd, sh: k.sh
+        left: r[2] + '%', w: (on ? r[3] : 0) + '%', bg: k.bg, bd: k.bd, sh: k.sh,
+        an: (on && k.an) ? k.an : 'none'
       };
     });
     const modes = Object.keys(M).map(id => ({
