@@ -623,7 +623,7 @@ class Component extends DCLogic {
   }
 
   applyAccent() {
-    const hex = this.props.accent || PALETTE[1];
+    const hex = PALETTE[1];
     document.documentElement.style.setProperty('--acc', hex);
     const n = parseInt(hex.slice(1), 16);
     const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].join(',');
